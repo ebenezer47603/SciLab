@@ -1,0 +1,3147 @@
+/* ============================================================
+   SciLab - Chemistry Laboratory
+   Chemistry.css
+   ============================================================ */
+
+
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
+
+:root {
+
+    --chem-bg: #050b14;
+    --chem-bg-soft: #081321;
+    --chem-surface: rgba(13, 27, 45, 0.78);
+    --chem-surface-light: rgba(255, 255, 255, 0.045);
+
+    --chem-border: rgba(255, 255, 255, 0.09);
+    --chem-border-light: rgba(255, 255, 255, 0.14);
+
+    --chem-text: #f4f9ff;
+    --chem-muted: #91a4ba;
+
+    --chem-cyan: #35ddff;
+    --chem-blue: #4d9fff;
+    --chem-purple: #9c7bff;
+    --chem-green: #45e5a7;
+    --chem-orange: #ff9b69;
+    --chem-pink: #ff72b6;
+
+    --chem-radius: 26px;
+
+    --chem-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+.chemistry-page {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    color: var(--chem-text);
+
+    background:
+        #050b14;
+
+    box-sizing: border-box;
+}
+
+
+.chemistry-page *,
+.chemistry-page *::before,
+.chemistry-page *::after {
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.chemistry-hero {
+
+    position: relative;
+
+    min-height: 760px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, 0.9fr);
+
+    align-items: center;
+
+    gap: 40px;
+
+    padding:
+        100px 7%
+        90px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(53, 221, 255, 0.08),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(156, 123, 255, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050b14,
+            #071523 52%,
+            #050b14
+        );
+}
+
+
+/* ============================================================
+   HERO BACKGROUND
+   ============================================================ */
+
+.chemistry-hero-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.chem-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+.chem-glow-one {
+
+    width: 520px;
+    height: 520px;
+
+    left: -230px;
+    top: 60px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(53, 221, 255, 0.14),
+            transparent 70%
+        );
+}
+
+
+.chem-glow-two {
+
+    width: 600px;
+    height: 600px;
+
+    right: -250px;
+    bottom: -220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(156, 123, 255, 0.13),
+            transparent 70%
+        );
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.chem-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.20;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+
+/* ============================================================
+   PARTICLES
+   ============================================================ */
+
+.chem-particle {
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--chem-cyan);
+
+    box-shadow:
+        0 0 16px
+        rgba(53, 221, 255, 0.8);
+
+    animation:
+        chemParticleFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.particle-1 {
+
+    left: 12%;
+    top: 25%;
+
+    animation-delay: 0s;
+}
+
+
+.particle-2 {
+
+    left: 30%;
+    top: 70%;
+
+    animation-delay: 1.2s;
+}
+
+
+.particle-3 {
+
+    left: 75%;
+    top: 18%;
+
+    animation-delay: 2s;
+}
+
+
+.particle-4 {
+
+    right: 14%;
+    top: 60%;
+
+    animation-delay: 0.8s;
+}
+
+
+.particle-5 {
+
+    right: 38%;
+    bottom: 16%;
+
+    animation-delay: 2.7s;
+}
+
+
+@keyframes chemParticleFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.45;
+    }
+
+    50% {
+
+        transform:
+            translateY(-22px)
+            scale(1.5);
+
+        opacity: 1;
+    }
+}
+
+
+/* ============================================================
+   HERO CONTENT
+   ============================================================ */
+
+.chemistry-hero-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 720px;
+}
+
+
+/* ============================================================
+   BADGE
+   ============================================================ */
+
+.chemistry-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        9px 17px;
+
+    margin-bottom: 25px;
+
+    border:
+        1px solid
+        rgba(53, 221, 255, 0.20);
+
+    border-radius: 999px;
+
+    background:
+        rgba(53, 221, 255, 0.055);
+
+    color:
+        #92ecff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        0.14em;
+
+    box-shadow:
+        0 0 35px
+        rgba(53, 221, 255, 0.05);
+}
+
+
+.badge-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--chem-cyan);
+
+    box-shadow:
+        0 0 12px
+        var(--chem-cyan);
+
+    animation:
+        badgePulse
+        2s
+        infinite;
+}
+
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+
+        opacity: 0.5;
+
+        transform: scale(0.8);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.2);
+    }
+}
+
+
+/* ============================================================
+   HERO TITLE
+   ============================================================ */
+
+.chemistry-hero-content h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            82px
+        );
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.055em;
+
+    font-weight:
+        850;
+
+    color:
+        var(--chem-text);
+}
+
+
+.chemistry-hero-content h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--chem-cyan),
+            var(--chem-blue),
+            var(--chem-purple)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+/* ============================================================
+   HERO DESCRIPTION
+   ============================================================ */
+
+.chemistry-hero-content > p {
+
+    max-width: 650px;
+
+    margin:
+        27px 0 0;
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+}
+
+
+/* ============================================================
+   HERO ACTIONS
+   ============================================================ */
+
+.chemistry-hero-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-top:
+        34px;
+}
+
+
+.chemistry-primary-btn,
+.chemistry-secondary-btn {
+
+    min-height: 52px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding:
+        0 21px;
+
+    border-radius: 15px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* PRIMARY */
+
+.chemistry-primary-btn {
+
+    border:
+        1px solid
+        rgba(53, 221, 255, 0.45);
+
+    color:
+        #031018;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5ee7ff,
+            #55a9ff
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(53, 221, 255, 0.14);
+}
+
+
+.chemistry-primary-btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 22px 50px
+        rgba(53, 221, 255, 0.25);
+}
+
+
+/* SECONDARY */
+
+.chemistry-secondary-btn {
+
+    border:
+        1px solid
+        var(--chem-border-light);
+
+    color:
+        #eaf5ff;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+
+.chemistry-secondary-btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(53,221,255,0.30);
+
+    background:
+        rgba(53,221,255,0.08);
+}
+
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+.chemistry-stats {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top:
+        43px;
+}
+
+
+.chem-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.chem-stat strong {
+
+    font-size:
+        25px;
+
+    line-height: 1;
+
+    color:
+        #ffffff;
+}
+
+
+.chem-stat span {
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        0.03em;
+}
+
+
+.chem-stat-divider {
+
+    width: 1px;
+
+    height: 38px;
+
+    background:
+        rgba(255,255,255,0.10);
+}
+
+
+/* ============================================================
+   HERO SCIENCE VISUAL
+   ============================================================ */
+
+.chemistry-visual {
+
+    position: relative;
+
+    z-index: 4;
+
+    width:
+        min(560px, 100%);
+
+    aspect-ratio:
+        1 / 1;
+
+    justify-self: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ============================================================
+   ORBITS
+   ============================================================ */
+
+.atom-orbit {
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(53,221,255,0.20);
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 30px
+        rgba(53,221,255,0.025);
+}
+
+
+.orbit-1 {
+
+    width: 250px;
+    height: 250px;
+
+    transform:
+        rotate(25deg);
+
+    animation:
+        orbitRotateOne
+        14s
+        linear
+        infinite;
+}
+
+
+.orbit-2 {
+
+    width: 360px;
+    height: 210px;
+
+    transform:
+        rotate(-35deg);
+
+    border-color:
+        rgba(156,123,255,0.22);
+
+    animation:
+        orbitRotateTwo
+        17s
+        linear
+        infinite;
+}
+
+
+.orbit-3 {
+
+    width: 450px;
+    height: 280px;
+
+    transform:
+        rotate(65deg);
+
+    border-color:
+        rgba(69,229,167,0.16);
+
+    animation:
+        orbitRotateThree
+        21s
+        linear
+        infinite;
+}
+
+
+@keyframes orbitRotateOne {
+
+    from {
+        transform:
+            rotate(25deg);
+    }
+
+    to {
+        transform:
+            rotate(385deg);
+    }
+}
+
+
+@keyframes orbitRotateTwo {
+
+    from {
+        transform:
+            rotate(-35deg);
+    }
+
+    to {
+        transform:
+            rotate(325deg);
+    }
+}
+
+
+@keyframes orbitRotateThree {
+
+    from {
+        transform:
+            rotate(65deg);
+    }
+
+    to {
+        transform:
+            rotate(425deg);
+    }
+}
+
+
+/* ============================================================
+   NUCLEUS
+   ============================================================ */
+
+.chem-nucleus {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 135px;
+    height: 135px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #a6f3ff,
+            #43bfff 42%,
+            #3777ff 75%,
+            #172d75
+        );
+
+    border:
+        2px solid
+        rgba(255,255,255,0.35);
+
+    box-shadow:
+        0 0 35px
+        rgba(53,221,255,0.40),
+
+        0 0 100px
+        rgba(53,221,255,0.16),
+
+        inset
+        0 0 35px
+        rgba(255,255,255,0.22);
+
+    animation:
+        nucleusPulse
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+.chem-nucleus::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -16px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(53,221,255,0.20);
+
+    animation:
+        nucleusRing
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+.chem-nucleus span {
+
+    font-size:
+        47px;
+
+    font-weight:
+        900;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 3px 20px
+        rgba(0,0,0,0.30);
+}
+
+
+@keyframes nucleusPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.07);
+    }
+}
+
+
+@keyframes nucleusRing {
+
+    0%,
+    100% {
+
+        transform:
+            scale(0.95);
+
+        opacity:
+            0.4;
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity:
+            1;
+    }
+}
+
+
+/* ============================================================
+   ELECTRONS
+   ============================================================ */
+
+.electron {
+
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 8px
+        #ffffff,
+
+        0 0 22px
+        var(--chem-cyan);
+
+    z-index: 12;
+}
+
+
+.electron-1 {
+
+    top: 28%;
+
+    left: 67%;
+
+    animation:
+        electronFloatOne
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.electron-2 {
+
+    bottom: 27%;
+
+    left: 25%;
+
+    animation:
+        electronFloatTwo
+        6s
+        ease-in-out
+        infinite;
+}
+
+
+.electron-3 {
+
+    top: 68%;
+
+    right: 23%;
+
+    animation:
+        electronFloatThree
+        4.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes electronFloatOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+        transform:
+            translate(-35px,28px);
+    }
+}
+
+
+@keyframes electronFloatTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+        transform:
+            translate(40px,-25px);
+    }
+}
+
+
+@keyframes electronFloatThree {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+        transform:
+            translate(-25px,-30px);
+    }
+}
+
+
+/* ============================================================
+   FLOATING CHEMISTRY CARDS
+   ============================================================ */
+
+.floating-chem-card {
+
+    position: absolute;
+
+    z-index: 20;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 170px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius:
+        16px;
+
+    background:
+        rgba(9,22,37,0.76);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.30);
+
+    animation:
+        floatingCard
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.floating-chem-card > span {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    font-size:
+        19px;
+}
+
+
+.floating-chem-card div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.floating-chem-card strong {
+
+    color:
+        #ffffff;
+
+    font-size:
+        12px;
+}
+
+
+.floating-chem-card small {
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        10px;
+}
+
+
+.chem-card-1 {
+
+    left: 2%;
+    top: 18%;
+
+    border-color:
+        rgba(53,221,255,0.20);
+
+    animation-delay:
+        0s;
+}
+
+
+.chem-card-2 {
+
+    right: 0;
+    top: 39%;
+
+    border-color:
+        rgba(156,123,255,0.20);
+
+    animation-delay:
+        1.2s;
+}
+
+
+.chem-card-3 {
+
+    left: 7%;
+    bottom: 17%;
+
+    border-color:
+        rgba(69,229,167,0.20);
+
+    animation-delay:
+        2.2s;
+}
+
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+
+/* ============================================================
+   LABORATORIES SECTION
+   ============================================================ */
+
+.chemistry-labs {
+
+    position: relative;
+
+    padding:
+        105px 7%
+        120px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #050b14,
+            #071321
+        );
+}
+
+
+/* ============================================================
+   SECTION HEADING
+   ============================================================ */
+
+.chem-section-heading {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(260px, 0.6fr);
+
+    align-items: end;
+
+    gap: 40px;
+
+    margin-bottom:
+        52px;
+}
+
+
+.chem-section-heading > div > span {
+
+    display: block;
+
+    margin-bottom:
+        13px;
+
+    color:
+        var(--chem-cyan);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.17em;
+}
+
+
+.chem-section-heading h2 {
+
+    margin:
+        0;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            56px
+        );
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.chem-section-heading h2 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--chem-cyan),
+            var(--chem-purple)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.chem-section-heading p {
+
+    margin:
+        0;
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+}
+
+
+/* ============================================================
+   LAB GRID
+   ============================================================ */
+
+.chem-labs-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap:
+        18px;
+}
+
+
+/* ============================================================
+   LAB CARD
+   ============================================================ */
+
+.chem-lab-card {
+
+    position: relative;
+
+    min-height:
+        400px;
+
+    display: flex;
+
+    flex-direction:
+        column;
+
+    padding:
+        27px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        var(--chem-border);
+
+    border-radius:
+        var(--chem-radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,31,50,0.92),
+            rgba(7,17,30,0.90)
+        );
+
+    box-shadow:
+        var(--chem-shadow);
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.chem-lab-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,0.48);
+}
+
+
+.chem-card-glow {
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    top: -130px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    opacity:
+        0.18;
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.chem-lab-card:hover
+.chem-card-glow {
+
+    opacity:
+        0.32;
+
+    transform:
+        scale(1.15);
+}
+
+
+/* ============================================================
+   CARD COLORS
+   ============================================================ */
+
+.atom-card {
+
+    --card-accent:
+        var(--chem-cyan);
+}
+
+
+.atom-card .chem-card-glow {
+
+    background:
+        radial-gradient(
+            circle,
+            var(--chem-cyan),
+            transparent 70%
+        );
+}
+
+
+.molecule-card {
+
+    --card-accent:
+        var(--chem-purple);
+}
+
+
+.molecule-card .chem-card-glow {
+
+    background:
+        radial-gradient(
+            circle,
+            var(--chem-purple),
+            transparent 70%
+        );
+}
+
+
+.reaction-card {
+
+    --card-accent:
+        var(--chem-orange);
+}
+
+
+.reaction-card .chem-card-glow {
+
+    background:
+        radial-gradient(
+            circle,
+            var(--chem-orange),
+            transparent 70%
+        );
+}
+
+
+.ph-card {
+
+    --card-accent:
+        var(--chem-green);
+}
+
+
+.ph-card .chem-card-glow {
+
+    background:
+        radial-gradient(
+            circle,
+            var(--chem-green),
+            transparent 70%
+        );
+}
+
+
+/* ============================================================
+   CARD TOP
+   ============================================================ */
+
+.chem-card-top {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        38px;
+}
+
+
+.chem-icon {
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    font-size:
+        27px;
+
+    box-shadow:
+        inset
+        0 1px 0
+        rgba(255,255,255,0.06);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.chem-lab-card:hover
+.chem-icon {
+
+    transform:
+        rotate(-5deg)
+        scale(1.06);
+}
+
+
+.chem-card-top > span {
+
+    color:
+        rgba(255,255,255,0.28);
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.13em;
+}
+
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+
+.chem-card-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    flex:
+        1;
+}
+
+
+.chem-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        11px;
+
+    color:
+        var(--card-accent);
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.14em;
+}
+
+
+.chem-card-content h3 {
+
+    margin:
+        0 0 14px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        24px;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+.chem-card-content p {
+
+    margin:
+        0;
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.75;
+}
+
+
+/* ============================================================
+   CARD BUTTON
+   ============================================================ */
+
+.chem-open-btn {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-top:
+        27px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    color:
+        #eaf6ff;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        padding 0.25s ease;
+}
+
+
+.chem-open-btn span {
+
+    font-size:
+        19px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.chem-open-btn:hover {
+
+    padding-left:
+        19px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--card-accent) 10%,
+            transparent
+        );
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--card-accent) 35%,
+            transparent
+        );
+}
+
+
+.chem-open-btn:hover span {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* ============================================================
+   LEARNING SECTION
+   ============================================================ */
+
+.chemistry-learning {
+
+    position:
+        relative;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1fr);
+
+    align-items:
+        center;
+
+    gap:
+        90px;
+
+    padding:
+        120px 8%;
+
+    background:
+        #071321;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+}
+
+
+/* ============================================================
+   LEARNING VISUAL
+   ============================================================ */
+
+.chem-learning-visual {
+
+    position:
+        relative;
+
+    min-height:
+        460px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+/* ============================================================
+   LEARNING RINGS
+   ============================================================ */
+
+.learning-ring {
+
+    position:
+        absolute;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(53,221,255,0.14);
+}
+
+
+.ring-1 {
+
+    width:
+        230px;
+
+    height:
+        230px;
+
+    animation:
+        learningSpin
+        15s
+        linear
+        infinite;
+}
+
+
+.ring-2 {
+
+    width:
+        340px;
+
+    height:
+        340px;
+
+    border-color:
+        rgba(156,123,255,0.13);
+
+    animation:
+        learningSpinReverse
+        19s
+        linear
+        infinite;
+}
+
+
+.ring-3 {
+
+    width:
+        440px;
+
+    height:
+        440px;
+
+    border-color:
+        rgba(69,229,167,0.09);
+
+    animation:
+        learningSpin
+        25s
+        linear
+        infinite;
+}
+
+
+@keyframes learningSpin {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes learningSpinReverse {
+
+    from {
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+/* ============================================================
+   MOLECULE DISPLAY
+   ============================================================ */
+
+.molecule-display {
+
+    position:
+        relative;
+
+    width:
+        280px;
+
+    height:
+        160px;
+
+    z-index:
+        4;
+}
+
+
+.molecule-atom {
+
+    position:
+        absolute;
+
+    width:
+        75px;
+
+    height:
+        75px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    color:
+        #ffffff;
+
+    font-size:
+        24px;
+
+    font-weight:
+        900;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.22);
+
+    box-shadow:
+        0 0 30px
+        rgba(53,221,255,0.18);
+}
+
+
+.carbon {
+
+    left:
+        calc(50% - 37px);
+
+    top:
+        calc(50% - 37px);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #e9fbff,
+            #4dbfff 38%,
+            #275cff
+        );
+
+    box-shadow:
+        0 0 40px
+        rgba(53,221,255,0.30);
+}
+
+
+.oxygen {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #ff80a9 40%,
+            #c73372
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,114,182,0.25);
+}
+
+
+.oxygen-left {
+
+    left:
+        0;
+
+    top:
+        0;
+}
+
+
+.oxygen-right {
+
+    right:
+        0;
+
+    bottom:
+        0;
+}
+
+
+/* ============================================================
+   MOLECULAR BONDS
+   ============================================================ */
+
+.molecule-bond {
+
+    position:
+        absolute;
+
+    height:
+        8px;
+
+    width:
+        105px;
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.25),
+            rgba(53,221,255,0.75)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(53,221,255,0.20);
+}
+
+
+.bond-left {
+
+    left:
+        52px;
+
+    top:
+        57px;
+
+    transform:
+        rotate(24deg);
+}
+
+
+.bond-right {
+
+    right:
+        52px;
+
+    bottom:
+        57px;
+
+    transform:
+        rotate(24deg);
+}
+
+
+/* ============================================================
+   LEARNING FLOATING LABELS
+   ============================================================ */
+
+.learning-floating {
+
+    position:
+        absolute;
+
+    padding:
+        10px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(9,22,37,0.75);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:
+        #dceeff;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.25);
+
+    animation:
+        labelFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.lf-1 {
+
+    top:
+        16%;
+
+    left:
+        4%;
+}
+
+
+.lf-2 {
+
+    right:
+        1%;
+
+    top:
+        30%;
+
+    animation-delay:
+        1.3s;
+}
+
+
+.lf-3 {
+
+    left:
+        13%;
+
+    bottom:
+        14%;
+
+    animation-delay:
+        2.2s;
+}
+
+
+@keyframes labelFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-9px);
+    }
+}
+
+
+/* ============================================================
+   LEARNING CONTENT
+   ============================================================ */
+
+.chem-learning-content {
+
+    max-width:
+        650px;
+}
+
+
+.chem-learning-content > span {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        15px;
+
+    color:
+        var(--chem-cyan);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+.chem-learning-content h2 {
+
+    margin:
+        0;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            58px
+        );
+
+    line-height:
+        1.07;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.chem-learning-content h2 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--chem-cyan),
+            var(--chem-purple)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.chem-learning-content > p {
+
+    margin:
+        24px 0 0;
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.85;
+}
+
+
+/* ============================================================
+   LEARNING LIST
+   ============================================================ */
+
+.chem-learning-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        18px;
+
+    margin-top:
+        32px;
+}
+
+
+.chem-learning-item {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        14px;
+}
+
+
+.chem-learning-item > div {
+
+    flex:
+        0 0 auto;
+
+    width:
+        29px;
+
+    height:
+        29px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        9px;
+
+    color:
+        #06131c;
+
+    background:
+        var(--chem-cyan);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        0 0 20px
+        rgba(53,221,255,0.14);
+}
+
+
+.chem-learning-item section {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+}
+
+
+.chem-learning-item strong {
+
+    color:
+        #ffffff;
+
+    font-size:
+        13px;
+}
+
+
+.chem-learning-item small {
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.chemistry-cta {
+
+    position:
+        relative;
+
+    min-height:
+        390px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        80px 7%;
+
+    overflow:
+        hidden;
+
+    text-align:
+        center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071321,
+            #091a2c
+        );
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.chem-cta-glow {
+
+    position:
+        absolute;
+
+    width:
+        600px;
+
+    height:
+        600px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(53,221,255,0.12),
+            transparent 70%
+        );
+
+    filter:
+        blur(20px);
+
+    pointer-events:
+        none;
+}
+
+
+.chem-cta-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        700px;
+}
+
+
+.chem-cta-content > span {
+
+    display:
+        block;
+
+    margin-bottom:
+        14px;
+
+    color:
+        var(--chem-cyan);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.17em;
+}
+
+
+.chem-cta-content h2 {
+
+    margin:
+        0;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            62px
+        );
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.chem-cta-content p {
+
+    margin:
+        18px auto 0;
+
+    color:
+        var(--chem-muted);
+
+    font-size:
+        15px;
+}
+
+
+.chem-cta-content
+.chemistry-primary-btn {
+
+    margin-top:
+        28px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1150px) {
+
+    .chemistry-hero {
+
+        grid-template-columns:
+            1fr;
+
+        min-height:
+            auto;
+
+        padding:
+            100px 7% 70px;
+    }
+
+
+    .chemistry-hero-content {
+
+        max-width:
+            850px;
+
+        margin:
+            auto;
+
+        text-align:
+            center;
+    }
+
+
+    .chemistry-hero-content > p {
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+
+    .chemistry-hero-actions {
+
+        justify-content:
+            center;
+    }
+
+
+    .chemistry-stats {
+
+        justify-content:
+            center;
+    }
+
+
+    .chemistry-visual {
+
+        margin:
+            20px auto 0;
+
+        width:
+            min(570px, 100%);
+    }
+
+
+    .chem-labs-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+
+    .chemistry-learning {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            40px;
+    }
+
+
+    .chem-learning-content {
+
+        max-width:
+            800px;
+
+        margin:
+            auto;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .chemistry-hero {
+
+        padding:
+            75px 20px 55px;
+    }
+
+
+    .chemistry-hero-content h1 {
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                62px
+            );
+    }
+
+
+    .chemistry-hero-content > p {
+
+        font-size:
+            15px;
+    }
+
+
+    .chemistry-hero-actions {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+        max-width:
+            350px;
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+
+    .chemistry-primary-btn,
+    .chemistry-secondary-btn {
+
+        width:
+            100%;
+    }
+
+
+    .chemistry-stats {
+
+        gap:
+            14px;
+
+        margin-top:
+            35px;
+    }
+
+
+    .chem-stat strong {
+
+        font-size:
+            21px;
+    }
+
+
+    .chem-stat span {
+
+        font-size:
+            9px;
+    }
+
+
+    .chemistry-visual {
+
+        width:
+            100%;
+
+        min-height:
+            400px;
+    }
+
+
+    .orbit-1 {
+
+        width:
+            190px;
+
+        height:
+            190px;
+    }
+
+
+    .orbit-2 {
+
+        width:
+            270px;
+
+        height:
+            160px;
+    }
+
+
+    .orbit-3 {
+
+        width:
+            330px;
+
+        height:
+            210px;
+    }
+
+
+    .chem-nucleus {
+
+        width:
+            105px;
+
+        height:
+            105px;
+    }
+
+
+    .chem-nucleus span {
+
+        font-size:
+            37px;
+    }
+
+
+    .floating-chem-card {
+
+        min-width:
+            145px;
+
+        padding:
+            10px 11px;
+    }
+
+
+    .floating-chem-card > span {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+        font-size:
+            16px;
+    }
+
+
+    .floating-chem-card strong {
+
+        font-size:
+            10px;
+    }
+
+
+    .floating-chem-card small {
+
+        font-size:
+            8px;
+    }
+
+
+    .chem-card-1 {
+
+        left:
+            -3%;
+    }
+
+
+    .chem-card-2 {
+
+        right:
+            -4%;
+    }
+
+
+    .chem-card-3 {
+
+        left:
+            1%;
+
+        bottom:
+            8%;
+    }
+
+
+    .chemistry-labs {
+
+        padding:
+            75px 20px 80px;
+    }
+
+
+    .chem-section-heading {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+
+        margin-bottom:
+            35px;
+    }
+
+
+    .chem-section-heading h2 {
+
+        font-size:
+            38px;
+    }
+
+
+    .chem-labs-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .chem-lab-card {
+
+        min-height:
+            350px;
+
+        padding:
+            24px;
+    }
+
+
+    .chemistry-learning {
+
+        padding:
+            80px 20px;
+    }
+
+
+    .chem-learning-visual {
+
+        min-height:
+            380px;
+    }
+
+
+    .ring-1 {
+
+        width:
+            190px;
+
+        height:
+            190px;
+    }
+
+
+    .ring-2 {
+
+        width:
+            280px;
+
+        height:
+            280px;
+    }
+
+
+    .ring-3 {
+
+        width:
+            350px;
+
+        height:
+            350px;
+    }
+
+
+    .molecule-display {
+
+        transform:
+            scale(0.82);
+    }
+
+
+    .learning-floating {
+
+        font-size:
+            8px;
+
+        padding:
+            8px 10px;
+    }
+
+
+    .chem-learning-content h2 {
+
+        font-size:
+            39px;
+    }
+
+
+    .chemistry-cta {
+
+        min-height:
+            350px;
+
+        padding:
+            70px 20px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL DEVICES
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .chemistry-hero {
+
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+
+    .chemistry-badge {
+
+        font-size:
+            9px;
+
+        padding:
+            8px 12px;
+    }
+
+
+    .chemistry-stats {
+
+        gap:
+            9px;
+    }
+
+
+    .chem-stat-divider {
+
+        height:
+            30px;
+    }
+
+
+    .chemistry-visual {
+
+        min-height:
+            350px;
+    }
+
+
+    .orbit-1 {
+
+        width:
+            160px;
+
+        height:
+            160px;
+    }
+
+
+    .orbit-2 {
+
+        width:
+            225px;
+
+        height:
+            140px;
+    }
+
+
+    .orbit-3 {
+
+        width:
+            285px;
+
+        height:
+            180px;
+    }
+
+
+    .chem-nucleus {
+
+        width:
+            85px;
+
+        height:
+            85px;
+    }
+
+
+    .chem-nucleus span {
+
+        font-size:
+            30px;
+    }
+
+
+    .floating-chem-card {
+
+        transform:
+            scale(0.85);
+    }
+
+
+    .chemistry-labs {
+
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+
+    .chemistry-learning {
+
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+
+    .chem-learning-content h2 {
+
+        font-size:
+            34px;
+    }
+
+
+    .chemistry-cta {
+
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+.chemistry-page button:focus-visible {
+
+    outline:
+        2px solid
+        var(--chem-cyan);
+
+    outline-offset:
+        4px;
+}
+
+
+/* ============================================================
+   REDUCE MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .chemistry-page *,
+    .chemistry-page *::before,
+    .chemistry-page *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}

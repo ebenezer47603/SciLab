@@ -1,0 +1,805 @@
+/* ============================================================
+   SciLab Reaction Lab
+   Molecular Builder style
+   ============================================================ */
+
+.reaction-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    color: #f5f9ff;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(20, 105, 170, 0.12),
+            transparent 35%
+        ),
+        #07111f;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.reaction-header {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.reaction-eyebrow {
+    color: #55d8ff;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+
+.reaction-header h1 {
+    margin: 0;
+
+    font-size: clamp(
+        1.8rem,
+        3vw,
+        2.7rem
+    );
+
+    line-height: 1.1;
+}
+
+
+.reaction-header p {
+    margin: 8px 0 0;
+
+    color: #9fb1c7;
+
+    font-size: 0.98rem;
+}
+
+
+.reaction-badge {
+    min-width: 90px;
+
+    padding: 12px 18px;
+
+    border: 1px solid
+        rgba(63, 189, 255, 0.25);
+
+    border-radius: 14px;
+
+    background:
+        rgba(14, 39, 62, 0.8);
+
+    text-align: center;
+
+    color: #9fb1c7;
+
+    font-size: 0.8rem;
+}
+
+
+.reaction-badge span {
+    display: block;
+
+    color: #42d4ff;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   MAIN WORKSPACE
+   ============================================================ */
+
+.reaction-workspace {
+    width: 100%;
+    max-width: 1500px;
+
+    min-height: 650px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(280px, 350px)
+        minmax(0, 1fr);
+
+    gap: 18px;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.reaction-sidebar {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    min-width: 0;
+}
+
+
+.reaction-card {
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(90, 151, 194, 0.2);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 31, 49, 0.98),
+            rgba(8, 22, 37, 0.98)
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.2);
+}
+
+
+.reaction-card-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+
+.reaction-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 174, 255, 0.12);
+
+    font-size: 1.15rem;
+}
+
+
+.reaction-card-title h2 {
+    margin: 0;
+
+    font-size: 1.05rem;
+}
+
+
+.reaction-card-title p {
+    margin: 3px 0 0;
+
+    color: #7891aa;
+
+    font-size: 0.75rem;
+}
+
+
+/* ============================================================
+   SELECT
+   ============================================================ */
+
+.reaction-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #a9bed3;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+
+.reaction-select {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(54, 190, 244, 0.55);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #0d2034;
+
+    color: #f4f9ff;
+
+    font-size: 0.88rem;
+
+    cursor: pointer;
+}
+
+
+.reaction-select:focus {
+    border-color: #32c9ff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(50, 201, 255, 0.12);
+}
+
+
+.reaction-equation-box {
+    margin-top: 13px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #65ddff;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.reaction-buttons {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 9px;
+}
+
+
+.reaction-button {
+    min-height: 42px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+.reaction-button:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.08);
+}
+
+
+.reaction-button:active {
+    transform: translateY(0);
+}
+
+
+.reaction-button-start {
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #22d3ee
+        );
+}
+
+
+.reaction-button-pause {
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #fb7185
+        );
+}
+
+
+.reaction-button-resume {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #06b6d4
+        );
+}
+
+
+.reaction-button-reset {
+    background:
+        #263b51;
+}
+
+
+/* ============================================================
+   TEMPERATURE
+   ============================================================ */
+
+.reaction-temperature {
+    margin-top: 18px;
+}
+
+
+.reaction-temperature-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: #a8bdd1;
+
+    font-size: 0.82rem;
+}
+
+
+.reaction-temperature-header strong {
+    color: #ffffff;
+
+    font-size: 1rem;
+}
+
+
+.reaction-temperature input {
+    width: 100%;
+
+    margin: 0;
+
+    accent-color: #20b8ff;
+
+    cursor: pointer;
+}
+
+
+.temperature-range {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    color: #5f7891;
+
+    font-size: 0.68rem;
+}
+
+
+/* ============================================================
+   INFO
+   ============================================================ */
+
+.reaction-info-name {
+    color: #ffffff;
+
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+
+.reaction-info-category {
+    margin-top: 4px;
+
+    color: #4fc9ef;
+
+    font-size: 0.72rem;
+}
+
+
+.reaction-live-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+
+.reaction-live-item {
+    padding: 10px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+}
+
+
+.reaction-live-item span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #718aa2;
+
+    font-size: 0.68rem;
+}
+
+
+.reaction-live-item strong {
+    color: #eaf7ff;
+
+    font-size: 0.95rem;
+}
+
+
+.reaction-progress {
+    margin-top: 15px;
+}
+
+
+.reaction-progress-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    color: #7892aa;
+
+    font-size: 0.72rem;
+}
+
+
+.reaction-progress-header strong {
+    color: #5fdcff;
+}
+
+
+.reaction-progress-track {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #13283d;
+}
+
+
+.reaction-progress-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0ea5e9,
+            #22d3ee,
+            #34d399
+        );
+
+    transition:
+        width 0.2s ease;
+}
+
+
+.reaction-energy {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 14px;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    color: #7892aa;
+
+    font-size: 0.72rem;
+}
+
+
+.reaction-energy strong {
+    color: #fbbf24;
+}
+
+
+/* ============================================================
+   3D STAGE
+   ============================================================ */
+
+.reaction-stage-card {
+    min-width: 0;
+    min-height: 650px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(72, 143, 191, 0.25);
+
+    border-radius: 18px;
+
+    background:
+        #07111f;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.28);
+}
+
+
+.reaction-stage-header {
+    min-height: 62px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid
+        rgba(77, 137, 177, 0.15);
+
+    background:
+        rgba(9, 25, 41, 0.95);
+}
+
+
+.reaction-stage-header strong {
+    display: block;
+
+    color: #e9f6ff;
+
+    font-size: 0.95rem;
+}
+
+
+.reaction-stage-header span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6e8aa2;
+
+    font-size: 0.72rem;
+}
+
+
+.reaction-status {
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(30, 111, 153, 0.16);
+
+    color: #63dfff;
+
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+
+.reaction-status[data-state="running"] {
+    background:
+        rgba(16, 185, 129, 0.14);
+
+    color: #4ade80;
+}
+
+
+.reaction-status[data-state="paused"] {
+    background:
+        rgba(245, 158, 11, 0.14);
+
+    color: #fbbf24;
+}
+
+
+.reaction-status[data-state="complete"] {
+    background:
+        rgba(34, 197, 94, 0.15);
+
+    color: #86efac;
+}
+
+
+/* ============================================================
+   CANVAS
+   ============================================================ */
+
+.reaction-stage {
+    position: relative;
+
+    flex: 1;
+
+    min-height: 540px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(22, 61, 91, 0.18),
+            transparent 60%
+        );
+}
+
+
+.reaction-canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* ============================================================
+   FOOTER / LEGEND
+   ============================================================ */
+
+.reaction-stage-footer {
+    min-height: 42px;
+
+    padding: 0 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    border-top:
+        1px solid
+        rgba(77, 137, 177, 0.15);
+
+    color: #6f899f;
+
+    font-size: 0.7rem;
+
+    background:
+        rgba(9, 25, 41, 0.95);
+}
+
+
+.reaction-stage-footer span:last-child {
+    margin-left: auto;
+
+    color: #527087;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 950px) {
+
+    .reaction-page {
+        padding: 15px;
+    }
+
+
+    .reaction-workspace {
+        grid-template-columns: 1fr;
+    }
+
+
+    .reaction-sidebar {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(260px, 1fr)
+            );
+
+        align-items: start;
+    }
+
+
+    .reaction-stage-card {
+        min-height: 560px;
+    }
+
+
+    .reaction-stage {
+        min-height: 470px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .reaction-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .reaction-badge {
+        display: none;
+    }
+
+
+    .reaction-sidebar {
+        display: flex;
+    }
+
+
+    .reaction-buttons {
+        grid-template-columns: 1fr;
+    }
+
+
+    .reaction-stage-card {
+        min-height: 500px;
+    }
+
+
+    .reaction-stage {
+        min-height: 400px;
+    }
+
+
+    .reaction-stage-footer {
+        display: none;
+    }
+}

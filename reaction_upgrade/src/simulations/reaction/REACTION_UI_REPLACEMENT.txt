@@ -1,0 +1,765 @@
+============================================================
+MAIN.JS - REACTION PAGE REPLACEMENT
+============================================================
+
+1) Add this import near the other reaction imports:
+
+import {
+    reactions,
+    getCategories
+} from "./simulations/reaction/data/reactions.js";
+
+
+2) Replace your current ReactionPage() function with:
+
+function ReactionPage() {
+    const categories = getCategories();
+
+    const reactionOptions = categories.map(
+        category => `
+            <optgroup label="${category}">
+                ${reactions
+                    .filter(
+                        reaction =>
+                            reaction.category === category
+                    )
+                    .map(
+                        reaction => `
+                            <option value="${reaction.id}">
+                                ${reaction.name}
+                            </option>
+                        `
+                    )
+                    .join("")}
+            </optgroup>
+        `
+    ).join("");
+
+    return `
+        <section class="reaction-page">
+
+            <header class="reaction-header">
+                <span class="reaction-badge">
+                    🧪 SciLab Chemistry
+                </span>
+
+                <h1>
+                    Reaction Laboratory
+                </h1>
+
+                <p>
+                    Explore chemical reactions in a
+                    live 3D molecular chamber.
+                </p>
+            </header>
+
+            <div class="reaction-lab">
+
+                <aside class="reaction-sidebar">
+
+                    <div class="reaction-card">
+                        <h2>⚗️ Choose Reaction</h2>
+
+                        <select
+                            id="reaction-select"
+                            class="reaction-select"
+                        >
+                            ${reactionOptions}
+                        </select>
+
+                        <div
+                            id="reaction-selected-name"
+                            class="reaction-selected-name"
+                        >
+                            Hydrogen Combustion
+                        </div>
+
+                        <div
+                            id="reaction-equation"
+                            class="reaction-equation"
+                        >
+                            2H₂ + O₂ → 2H₂O
+                        </div>
+                    </div>
+
+                    <div class="reaction-card">
+
+                        <h2>🌡️ Temperature</h2>
+
+                        <input
+                            id="reaction-temperature"
+                            type="range"
+                            min="100"
+                            max="1100"
+                            value="298"
+                            step="1"
+                        />
+
+                        <div class="reaction-stat">
+                            Temperature:
+                            <strong
+                                id="reaction-temperature-value"
+                            >
+                                298 K
+                            </strong>
+                        </div>
+
+                        <div class="reaction-stat">
+                            Reaction rate:
+                            <strong
+                                id="reaction-rate-value"
+                            >
+                                0%
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="reaction-card">
+
+                        <h2>🧬 Molecules</h2>
+
+                        <div
+                            id="reaction-molecule-count"
+                            class="molecule-count"
+                        >
+                            Loading...
+                        </div>
+
+                    </div>
+
+                    <div class="reaction-card">
+
+                        <h2>🎮 Controls</h2>
+
+                        <div class="reaction-controls">
+
+                            <button
+                                id="reaction-start"
+                                type="button"
+                            >
+                                ▶ Start
+                            </button>
+
+                            <button
+                                id="reaction-pause"
+                                type="button"
+                            >
+                                ⏸ Pause
+                            </button>
+
+                            <button
+                                id="reaction-reset"
+                                type="button"
+                            >
+                                ↻ Reset
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="reaction-card">
+
+                        <div class="reaction-stat">
+                            Progress:
+                            <strong
+                                id="reaction-progress-value"
+                            >
+                                0%
+                            </strong>
+                        </div>
+
+                        <div class="reaction-progress">
+                            <div
+                                id="reaction-progress-bar"
+                            ></div>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+                <main
+                    id="reaction-container"
+                    class="reaction-container"
+                ></main>
+
+            </div>
+
+        </section>
+    `;
+}
+
+
+3) Replace initializeReactionSimulator() with:
+
+function initializeReactionSimulator() {
+
+    const container =
+        document.getElementById(
+            "reaction-container"
+        );
+
+    if (!container) {
+        console.warn(
+            "Reaction: #reaction-container not found."
+        );
+        return;
+    }
+
+    let simulator = null;
+    let renderer = null;
+    let animationFrame = null;
+    let resizeHandler = null;
+
+    try {
+
+        simulator =
+            new ReactionSimulator();
+
+        const scene =
+            simulator.getScene();
+
+        const camera =
+            simulator.getCamera();
+
+        renderer =
+            new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: false
+            });
+
+        renderer.setPixelRatio(
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            )
+        );
+
+        renderer.outputColorSpace =
+            THREE.SRGBColorSpace;
+
+        renderer.shadowMap.enabled =
+            true;
+
+        container.innerHTML = "";
+
+        container.appendChild(
+            renderer.domElement
+        );
+
+        const resize = () => {
+
+            const width =
+                Math.max(
+                    320,
+                    container.clientWidth
+                );
+
+            const height =
+                Math.max(
+                    420,
+                    container.clientHeight
+                );
+
+            camera.aspect =
+                width / height;
+
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(
+                width,
+                height
+            );
+        };
+
+        resizeHandler = resize;
+
+        window.addEventListener(
+            "resize",
+            resize
+        );
+
+        resize();
+
+        const select =
+            document.getElementById(
+                "reaction-select"
+            );
+
+        const temperatureInput =
+            document.getElementById(
+                "reaction-temperature"
+            );
+
+        const temperatureValue =
+            document.getElementById(
+                "reaction-temperature-value"
+            );
+
+        const rateValue =
+            document.getElementById(
+                "reaction-rate-value"
+            );
+
+        const progressValue =
+            document.getElementById(
+                "reaction-progress-value"
+            );
+
+        const progressBar =
+            document.getElementById(
+                "reaction-progress-bar"
+            );
+
+        const equation =
+            document.getElementById(
+                "reaction-equation"
+            );
+
+        const selectedName =
+            document.getElementById(
+                "reaction-selected-name"
+            );
+
+        const moleculeCount =
+            document.getElementById(
+                "reaction-molecule-count"
+            );
+
+        const updateReactionInfo = () => {
+
+            const reaction =
+                simulator.getReaction();
+
+            if (selectedName) {
+                selectedName.textContent =
+                    reaction.name;
+            }
+
+            if (equation) {
+                equation.textContent =
+                    reaction.equation;
+            }
+        };
+
+        const updateTemperature = () => {
+
+            const value =
+                Number(
+                    temperatureInput?.value || 298
+                );
+
+            if (temperatureValue) {
+                temperatureValue.textContent =
+                    `${value} K`;
+            }
+
+            simulator.setTemperature(
+                value
+            );
+        };
+
+        const updateUI = () => {
+
+            const engine =
+                simulator.getEngine();
+
+            const counts =
+                simulator
+                    .getMolecules()
+                    .getCounts();
+
+            const reaction =
+                simulator.getReaction();
+
+            const lines = [];
+
+            for (
+                const item
+                of reaction.reactants
+            ) {
+                const info =
+                    getMolecule(item.formula);
+
+                lines.push(
+                    `${info?.formula || item.formula}: ${counts[item.formula] || 0}`
+                );
+            }
+
+            for (
+                const item
+                of reaction.products
+            ) {
+                const info =
+                    getMolecule(item.formula);
+
+                lines.push(
+                    `${info?.formula || item.formula}: ${counts[item.formula] || 0}`
+                );
+            }
+
+            if (moleculeCount) {
+                moleculeCount.innerHTML =
+                    lines.join("<br>");
+            }
+
+            if (rateValue) {
+                rateValue.textContent =
+                    `${engine.getReactionRatePercent()}%`;
+            }
+
+            if (progressValue) {
+                progressValue.textContent =
+                    `${engine.getProgressPercent()}%`;
+            }
+
+            if (progressBar) {
+                progressBar.style.width =
+                    `${engine.getProgressPercent()}%`;
+            }
+        };
+
+        if (select) {
+
+            select.addEventListener(
+                "change",
+                () => {
+
+                    simulator.setReaction(
+                        select.value
+                    );
+
+                    updateReactionInfo();
+                    updateTemperature();
+                    updateUI();
+                }
+            );
+        }
+
+        document
+            .getElementById(
+                "reaction-start"
+            )
+            ?.addEventListener(
+                "click",
+                () => simulator.start()
+            );
+
+        document
+            .getElementById(
+                "reaction-pause"
+            )
+            ?.addEventListener(
+                "click",
+                () => simulator.pause()
+            );
+
+        document
+            .getElementById(
+                "reaction-reset"
+            )
+            ?.addEventListener(
+                "click",
+                () => {
+                    simulator.reset();
+                    updateTemperature();
+                    updateReactionInfo();
+                    updateUI();
+                }
+            );
+
+        temperatureInput?.addEventListener(
+            "input",
+            () => {
+                updateTemperature();
+                updateUI();
+            }
+        );
+
+        updateReactionInfo();
+        updateTemperature();
+        updateUI();
+
+        let lastTime =
+            performance.now();
+
+        const animate =
+            currentTime => {
+
+                if (
+                    !simulator ||
+                    !renderer
+                ) {
+                    return;
+                }
+
+                const deltaTime =
+                    Math.min(
+                        0.05,
+                        Math.max(
+                            0,
+                            (
+                                currentTime -
+                                lastTime
+                            ) / 1000
+                        )
+                    );
+
+                lastTime =
+                    currentTime;
+
+                simulator.update(
+                    deltaTime
+                );
+
+                updateUI();
+
+                renderer.render(
+                    scene,
+                    camera
+                );
+
+                animationFrame =
+                    requestAnimationFrame(
+                        animate
+                    );
+            };
+
+        animationFrame =
+            requestAnimationFrame(
+                animate
+            );
+
+        currentCleanup = () => {
+
+            if (
+                animationFrame !== null
+            ) {
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+                animationFrame = null;
+            }
+
+            if (resizeHandler) {
+                window.removeEventListener(
+                    "resize",
+                    resizeHandler
+                );
+
+                resizeHandler = null;
+            }
+
+            if (renderer) {
+                renderer.dispose();
+
+                renderer.domElement
+                    ?.remove();
+
+                renderer = null;
+            }
+
+            simulator = null;
+        };
+
+        console.log(
+            "Reaction Laboratory initialized."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Reaction Laboratory error:",
+            error
+        );
+
+        if (renderer) {
+            renderer.dispose();
+        }
+
+        renderer = null;
+        simulator = null;
+    }
+}
+
+
+4) IMPORTANT:
+The initializeReactionSimulator() above uses getMolecule().
+Add this import beside the reactions import:
+
+import {
+    getMolecule
+} from "./simulations/reaction/data/molecules.js";
+
+
+5) The route must still use:
+registerRoute("reaction", ReactionPage);
+
+============================================================
+STYLE.CSS - ADD THIS AT THE END
+============================================================
+
+.reaction-page {
+    padding: 24px;
+    min-height: 620px;
+}
+
+.reaction-header {
+    margin-bottom: 18px;
+}
+
+.reaction-header h1 {
+    margin: 8px 0;
+    font-size: 32px;
+}
+
+.reaction-header p {
+    margin: 0;
+    opacity: 0.82;
+}
+
+.reaction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 170, 255, 0.14);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+}
+
+.reaction-lab {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.reaction-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.reaction-card {
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(15, 25, 43, 0.94);
+    border: 1px solid rgba(130, 170, 210, 0.22);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.reaction-card h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.reaction-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 9px;
+    border: 1px solid rgba(130, 170, 210, 0.3);
+    background: #0b1628;
+    color: inherit;
+}
+
+.reaction-selected-name {
+    margin-top: 12px;
+    font-weight: 700;
+}
+
+.reaction-equation {
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 9px;
+    background: rgba(0, 170, 255, 0.08);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.reaction-card input[type="range"] {
+    width: 100%;
+}
+
+.reaction-stat {
+    margin-top: 8px;
+}
+
+.molecule-count {
+    line-height: 1.65;
+    font-family: monospace;
+}
+
+.reaction-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 7px;
+}
+
+.reaction-controls button {
+    padding: 9px 7px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.reaction-progress {
+    width: 100%;
+    height: 10px;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.reaction-progress > div {
+    width: 0;
+    height: 100%;
+    transition: width 120ms linear;
+    background: #18a7ff;
+}
+
+.reaction-container {
+    min-width: 0;
+    min-height: 620px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #08111f;
+    border: 1px solid rgba(130, 170, 210, 0.25);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.25);
+}
+
+.reaction-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+    .reaction-lab {
+        grid-template-columns: 1fr;
+    }
+
+    .reaction-container {
+        min-height: 520px;
+    }
+}
+
+============================================================
+IMPORTANT FIX
+============================================================
+
+The existing MoleculeRenderer only knew H2, O2 and H2O.
+The replacement above uses the molecule database and therefore supports
+all 22 molecular/element definitions needed by the 10 reactions.
+
+The existing ReactionEngine also hard-coded H2 + O2 and manually created
+H2O. The replacement engine uses reaction.reactants/products and
+stoichiometric coefficients instead.
+
+Do NOT import a second ReactionControls.js into main.js.

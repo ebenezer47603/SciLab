@@ -1,0 +1,4573 @@
+/* ============================================================
+   SciLab - Biology Laboratory
+   biology.css
+   ============================================================ */
+
+
+.biology-page {
+    min-height: 100vh;
+    padding: 48px 5%;
+    box-sizing: border-box;
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(14,165,233,.12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(124,58,237,.12),
+            transparent 30%
+        ),
+        #07111f;
+    color: #f8fafc;
+}
+
+
+.biology-header {
+    max-width: 1250px;
+    margin: 0 auto 44px;
+}
+
+
+.biology-header-inner {
+    max-width: 760px;
+}
+
+
+.biology-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #67e8f9;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+.biology-header h1 {
+    margin: 10px 0 14px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1;
+}
+
+
+.biology-header h1 span {
+    color: #64748b;
+    font-weight: 400;
+}
+
+
+.biology-header p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.biology-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(270px, 1fr)
+        );
+    gap: 22px;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.biology-simulation-card {
+    --biology-accent: #38bdf8;
+
+    position: relative;
+    min-height: 470px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,31,51,.96),
+            rgba(6,13,24,.98)
+        );
+
+    border:
+        1px solid
+        rgba(148,163,184,.16);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.28);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.biology-simulation-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            color-mix(
+                in srgb,
+                var(--biology-accent) 18%,
+                transparent
+            ),
+            transparent 42%
+        );
+
+    pointer-events: none;
+}
+
+
+.biology-simulation-card:hover {
+    transform:
+        perspective(900px)
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateY(-8px);
+
+    border-color:
+        var(--biology-accent);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.38);
+}
+
+
+/* ============================================================
+   3D ICON
+   ============================================================ */
+
+.biology-3d-icon {
+    position: relative;
+
+    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective: 700px;
+
+    transform-style: preserve-3d;
+}
+
+
+.biology-icon-glow {
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background:
+        var(--biology-accent);
+
+    filter: blur(55px);
+
+    opacity: .20;
+}
+
+
+.biology-icon-orbit {
+    position: absolute;
+
+    width: 130px;
+    height: 70px;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--biology-accent) 55%,
+            transparent
+        );
+
+    border-radius: 50%;
+
+    transform:
+        rotateX(62deg)
+        rotateZ(-15deg);
+
+    opacity: .65;
+}
+
+
+.biology-icon-object {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 80px;
+
+    filter:
+        drop-shadow(
+            0 18px 15px
+            rgba(0,0,0,.5)
+        );
+
+    transform:
+        translateZ(50px);
+
+    animation:
+        biologyFloat 4s ease-in-out infinite;
+}
+
+
+.biology-icon-3d-label {
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+
+    color: #e2e8f0;
+
+    background:
+        rgba(15,23,42,.78);
+
+    border:
+        1px solid
+        rgba(148,163,184,.18);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+@keyframes biologyFloat {
+
+    0%,
+    100% {
+        transform:
+            translateZ(50px)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateZ(60px)
+            translateY(-8px);
+    }
+}
+
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+
+.biology-card-body {
+    position: relative;
+    z-index: 2;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        0 24px 24px;
+}
+
+
+.biology-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+
+.biology-card-number {
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.biology-card-status {
+    color: #fbbf24;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    padding:
+        5px 8px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(245,158,11,.25);
+
+    background:
+        rgba(245,158,11,.08);
+}
+
+
+.biology-card-subtitle {
+    color:
+        var(--biology-accent);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.biology-card-body h2 {
+    margin:
+        8px 0 10px;
+
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+
+.biology-card-body p {
+    margin: 0 0 22px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+    line-height: 1.65;
+
+    flex: 1;
+}
+
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+
+.biology-open-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    padding:
+        14px 16px;
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--biology-accent),
+            color-mix(
+                in srgb,
+                var(--biology-accent) 55%,
+                #020617
+            )
+        );
+
+    box-shadow:
+        0 12px 25px
+        rgba(0,0,0,.25);
+
+    transition:
+        transform .2s ease,
+        filter .2s ease;
+}
+
+
+.biology-open-btn:hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.08);
+}
+
+
+.biology-open-btn:active {
+    transform:
+        translateY(1px);
+}
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.biology-developer-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+}
+
+
+.biology-developer-modal[hidden] {
+    display: none;
+}
+
+
+.biology-developer-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(2,6,23,.78);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.biology-developer-dialog {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        440px,
+        100%
+    );
+
+    padding: 32px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #132038,
+            #08101e
+        );
+
+    border:
+        1px solid
+        rgba(148,163,184,.2);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
+}
+
+
+.biology-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(148,163,184,.1);
+
+    color: #cbd5e1;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+.biology-modal-3d-icon {
+    font-size: 64px;
+
+    margin-bottom: 14px;
+
+    filter:
+        drop-shadow(
+            0 16px 18px
+            rgba(0,0,0,.35)
+        );
+}
+
+
+.biology-modal-status {
+    display: inline-block;
+
+    color: #fbbf24;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 12px;
+}
+
+
+.biology-developer-dialog h2 {
+    margin: 0 0 10px;
+
+    font-size: 25px;
+}
+
+
+.biology-developer-dialog p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+}
+
+
+.biology-modal-ok {
+    margin-top: 24px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    padding:
+        12px 24px;
+
+    color: #fff;
+
+    background: #2563eb;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (
+    max-width: 720px
+) {
+
+    .biology-page {
+        padding:
+            32px 18px;
+    }
+
+    .biology-header h1 {
+        font-size: 38px;
+    }
+
+    .biology-simulation-card {
+        min-height: 440px;
+    }
+
+}
+/* ============================================================
+   BIOLOGY 3D LABORATORY
+   ============================================================ */
+
+.biology-lab {
+    width: min(1250px, 100%);
+    margin: 70px auto 0;
+    padding: 28px;
+    box-sizing: border-box;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 27, 48, 0.98),
+            rgba(5, 12, 24, 0.99)
+        );
+
+    border: 1px solid rgba(148, 163, 184, 0.16);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.35);
+}
+
+
+.biology-lab[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.biology-lab-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 22px;
+}
+
+
+.biology-lab-kicker {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    color: #67e8f9;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+}
+
+
+.biology-lab-header h2 {
+    margin: 0 0 8px;
+
+    color: #f8fafc;
+
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+
+.biology-lab-header p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+
+.biology-lab-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.biology-control-btn {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+
+    border-radius: 11px;
+
+    padding: 10px 14px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    color: #e2e8f0;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.biology-control-btn:hover {
+    transform: translateY(-1px);
+
+    border-color: #38bdf8;
+
+    background: rgba(30, 41, 59, 1);
+}
+
+
+/* ============================================================
+   CONTEXT CONTROLS
+   ============================================================ */
+
+.biology-simulation-controls {
+    margin-bottom: 16px;
+}
+
+
+.biology-context-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+
+.biology-context-controls[hidden] {
+    display: none !important;
+}
+
+
+.biology-context-btn {
+    border: 1px solid rgba(148, 163, 184, 0.2);
+
+    border-radius: 10px;
+
+    padding: 9px 13px;
+
+    background: #0d192b;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.biology-context-btn:hover,
+.biology-context-btn.active {
+    border-color: #38bdf8;
+
+    color: white;
+
+    background: #132b46;
+}
+
+
+/* ============================================================
+   3D + INFO LAYOUT
+   ============================================================ */
+
+.biology-lab-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+/* ============================================================
+   3D SCENE
+   ============================================================ */
+
+.biology-scene-container {
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 680px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(20, 66, 109, 0.28),
+            rgba(2, 8, 18, 0.98) 72%
+        );
+
+    border: 1px solid rgba(96, 165, 250, 0.15);
+
+    box-shadow:
+        inset 0 0 80px rgba(0, 0, 0, 0.22);
+}
+
+
+.biology-scene-container canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    outline: none;
+
+    touch-action: none;
+}
+
+
+/* ============================================================
+   INFO PANEL
+   ============================================================ */
+
+.biology-info-panel {
+    min-height: 680px;
+
+    box-sizing: border-box;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(15, 29, 49, 0.96),
+            rgba(7, 15, 28, 0.99)
+        );
+
+    border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+
+.info-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #67e8f9;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.biology-info-panel h3 {
+    margin: 0 0 7px;
+
+    color: #f8fafc;
+
+    font-size: 21px;
+}
+
+
+.biology-info-panel p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    line-height: 1.65;
+}
+
+
+.info-divider {
+    height: 1px;
+
+    margin: 18px 0;
+
+    background:
+        rgba(148, 163, 184, 0.12);
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (
+    max-width: 900px
+) {
+
+    .biology-lab {
+        padding: 20px;
+    }
+
+
+    .biology-lab-header {
+        flex-direction: column;
+    }
+
+
+    .biology-lab-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .biology-scene-container {
+        height: 560px;
+    }
+
+
+    .biology-info-panel {
+        min-height: auto;
+    }
+
+}
+
+
+@media (
+    max-width: 600px
+) {
+
+    .biology-scene-container {
+        height: 430px;
+    }
+
+
+    .biology-lab-header h2 {
+        font-size: 23px;
+    }
+
+}
+/* ============================================================
+   DEDICATED BIOLOGY 3D SIMULATION PAGE
+   ============================================================ */
+
+.biology-simulation-page {
+    min-height: 100vh;
+
+    padding:
+        36px 5% 60px;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(14,165,233,.10),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(124,58,237,.10),
+            transparent 32%
+        ),
+        #050d18;
+
+    color:
+        #f8fafc;
+}
+
+
+.biology-simulation-header {
+    max-width: 1400px;
+
+    margin:
+        0 auto 22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+}
+
+
+.biology-simulation-kicker {
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #67e8f9;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.8px;
+}
+
+
+.biology-simulation-header h1 {
+    margin:
+        0 0 8px;
+
+    font-size:
+        clamp(30px, 4vw, 50px);
+
+    line-height:
+        1.05;
+}
+
+
+.biology-simulation-header p {
+    margin:
+        0;
+
+    max-width:
+        720px;
+
+    color:
+        #94a3b8;
+
+    line-height:
+        1.7;
+}
+
+
+.biology-back-button,
+.biology-simulation-control {
+    border:
+        1px solid
+        rgba(148,163,184,.20);
+
+    border-radius:
+        12px;
+
+    padding:
+        11px 15px;
+
+    color:
+        #e2e8f0;
+
+    background:
+        rgba(15,23,42,.90);
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+}
+
+
+.biology-back-button:hover,
+.biology-simulation-control:hover {
+    border-color:
+        #38bdf8;
+
+    background:
+        #10233b;
+}
+
+
+.biology-simulation-toolbar {
+    max-width:
+        1400px;
+
+    margin:
+        0 auto 18px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        10px;
+}
+
+
+.biology-simulation-control.active {
+    border-color:
+        #38bdf8;
+
+    background:
+        #123252;
+}
+
+
+.biology-simulation-workspace {
+    max-width:
+        1400px;
+
+    margin:
+        0 auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+
+    gap:
+        20px;
+}
+
+
+.biology-simulation-container {
+    width:
+        100%;
+
+    height:
+        min(72vh, 760px);
+
+    min-height:
+        560px;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
+
+    border-radius:
+        24px;
+
+    border:
+        1px solid
+        rgba(96,165,250,.18);
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(14,70,110,.22),
+            #020914 72%
+        );
+
+    box-shadow:
+        inset 0 0 100px
+        rgba(0,0,0,.30),
+        0 24px 80px
+        rgba(0,0,0,.26);
+}
+
+
+.biology-simulation-container canvas {
+    display:
+        block;
+
+    width:
+        100% !important;
+
+    height:
+        100% !important;
+
+    touch-action:
+        none;
+
+    outline:
+        none;
+}
+
+
+.biology-simulation-info {
+    min-height:
+        560px;
+
+    padding:
+        24px;
+
+    box-sizing:
+        border-box;
+
+    border-radius:
+        20px;
+
+    border:
+        1px solid
+        rgba(148,163,184,.14);
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(15,29,49,.96),
+            rgba(7,15,28,.99)
+        );
+}
+
+
+.biology-info-label {
+    display:
+        block;
+
+    margin-bottom:
+        12px;
+
+    color:
+        #67e8f9;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+.biology-simulation-info h2 {
+    margin:
+        0 0 8px;
+
+    font-size:
+        24px;
+}
+
+
+.biology-simulation-info p {
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    line-height:
+        1.7;
+}
+
+
+.biology-info-divider {
+    width:
+        100%;
+
+    height:
+        1px;
+
+    margin:
+        18px 0;
+
+    background:
+        rgba(148,163,184,.12);
+}
+
+
+@media (max-width: 950px) {
+
+    .biology-simulation-header {
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .biology-simulation-workspace {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .biology-simulation-container {
+        height:
+            600px;
+
+        min-height:
+            500px;
+    }
+
+
+    .biology-simulation-info {
+        min-height:
+            auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .biology-simulation-page {
+        padding:
+            24px 14px 40px;
+    }
+
+
+    .biology-simulation-container {
+        height:
+            480px;
+
+        min-height:
+            420px;
+    }
+
+}
+/* ============================================================
+   SCILAB BIOLOGY - OSMOSIS LAB
+   ============================================================ */
+
+.osmosis-lab {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.osmosis-lab-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.osmosis-kicker {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    opacity: 0.62;
+    margin-bottom: 8px;
+}
+
+.osmosis-lab-header h2 {
+    margin: 0;
+    font-size: clamp(26px, 3vw, 42px);
+}
+
+.osmosis-lab-header p {
+    margin: 8px 0 0;
+    max-width: 760px;
+    opacity: 0.68;
+    line-height: 1.6;
+}
+
+.osmosis-status {
+    padding: 9px 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.osmosis-lab-grid {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) 260px;
+    gap: 16px;
+}
+
+.osmosis-controls,
+.osmosis-results,
+.osmosis-simulation-panel,
+.osmosis-graph-panel,
+.osmosis-explanation {
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(7, 17, 31, 0.78);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.24);
+}
+
+.osmosis-controls,
+.osmosis-results {
+    padding: 18px;
+}
+
+.osmosis-panel-title {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    opacity: 0.55;
+    margin-bottom: 18px;
+}
+
+.osmosis-controls label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.osmosis-controls output {
+    font-weight: 900;
+    opacity: 0.82;
+}
+
+.osmosis-controls input[type="range"] {
+    width: 100%;
+    accent-color: #66d9ff;
+    cursor: pointer;
+}
+
+.osmosis-control-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.osmosis-control-actions button {
+    min-height: 42px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    color: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease;
+}
+
+.osmosis-control-actions button:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.08);
+}
+
+#osmosis-reset {
+    grid-column: 1 / -1;
+}
+
+.osmosis-legend {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.osmosis-legend div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    opacity: 0.78;
+}
+
+.osmosis-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.osmosis-dot.water {
+    background: #72b9ff;
+}
+
+.osmosis-dot.solute {
+    background: #ff9b62;
+}
+
+.osmosis-dot.membrane {
+    background: #8df5e9;
+}
+
+.osmosis-simulation-panel {
+    min-height: 520px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.osmosis-simulation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.osmosis-simulation-header span:last-child {
+    opacity: 0.58;
+}
+
+.osmosis-canvas {
+    flex: 1;
+    min-height: 450px;
+    position: relative;
+}
+
+.osmosis-canvas canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.osmosis-simulation-caption {
+    padding: 13px 18px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 12px;
+    line-height: 1.55;
+    opacity: 0.58;
+}
+
+.osmosis-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.osmosis-result span {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.osmosis-result strong {
+    font-size: 18px;
+}
+
+.osmosis-direction-card {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(102,217,255,0.06);
+    border: 1px solid rgba(102,217,255,0.13);
+    text-align: center;
+}
+
+.osmosis-direction-card span {
+    display: block;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    opacity: 0.55;
+}
+
+.osmosis-direction-card strong {
+    display: block;
+    font-size: 38px;
+    line-height: 1;
+    margin: 12px 0;
+}
+
+.osmosis-direction-card small {
+    display: block;
+    line-height: 1.5;
+    opacity: 0.62;
+}
+
+.osmosis-graph-panel {
+    margin-top: 16px;
+    padding: 18px;
+}
+
+.osmosis-graph-heading span {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    opacity: 0.5;
+}
+
+.osmosis-graph-heading h3 {
+    margin: 6px 0 14px;
+    font-size: 18px;
+}
+
+#osmosis-graph {
+    width: 100%;
+    height: 280px;
+    display: block;
+}
+
+.osmosis-explanation {
+    margin-top: 16px;
+    padding: 22px;
+}
+
+.osmosis-explanation > span {
+    display: block;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    opacity: 0.52;
+}
+
+.osmosis-explanation h3 {
+    margin: 7px 0;
+    font-size: 24px;
+}
+
+.osmosis-explanation p {
+    margin: 0;
+    max-width: 1000px;
+    line-height: 1.7;
+    opacity: 0.68;
+}
+
+@media (max-width: 1100px) {
+    .osmosis-lab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .osmosis-simulation-panel {
+        min-height: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    .osmosis-lab {
+        padding: 14px;
+    }
+
+    .osmosis-lab-header {
+        flex-direction: column;
+    }
+
+    .osmosis-control-actions {
+        grid-template-columns: 1fr;
+    }
+
+    #osmosis-reset {
+        grid-column: auto;
+    }
+}
+/* ============================================================
+   SCILAB BIOLOGY — ENZYME LABORATORY
+   Premium Virtual Lab UI
+   ============================================================ */
+
+.enzyme-lab {
+    position: relative;
+    width: 100%;
+    padding: 28px;
+    color: #f8fafc;
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(139, 92, 246, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(56, 189, 248, 0.08),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #050b15 0%,
+            #07111f 45%,
+            #030812 100%
+        );
+
+    border-top: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.enzyme-lab-header {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-bottom: 22px;
+    padding: 4px 2px;
+}
+
+.enzyme-lab-heading {
+    max-width: 850px;
+}
+
+.enzyme-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 10px;
+
+    color: #c4b5fd;
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.enzyme-kicker::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        #8b5cf6,
+        #60a5fa
+    );
+}
+
+.enzyme-lab-heading h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 850;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+}
+
+.enzyme-lab-heading p {
+    max-width: 800px;
+
+    margin: 10px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.enzyme-live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: 999px;
+
+    background:
+        rgba(15, 23, 42, 0.78);
+
+    backdrop-filter: blur(12px);
+
+    color: #ddd6fe;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 10px 35px rgba(0,0,0,.18);
+}
+
+.enzyme-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+        0 0 0 4px rgba(74,222,128,.08),
+        0 0 18px rgba(74,222,128,.75);
+
+    animation:
+        enzyme-pulse 1.8s infinite ease-in-out;
+}
+
+
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
+
+.enzyme-lab-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(245px, 275px)
+        minmax(420px, 1fr)
+        minmax(245px, 275px);
+
+    gap: 16px;
+
+    align-items: stretch;
+}
+
+
+/* ============================================================
+   GLASS PANELS
+   ============================================================ */
+
+.enzyme-panel {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(5, 12, 23, 0.96)
+        );
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 22px 55px rgba(0,0,0,.30);
+}
+
+.enzyme-panel::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.025),
+            transparent 30%
+        );
+
+    opacity: .75;
+}
+
+
+/* ============================================================
+   PANEL HEADER
+   ============================================================ */
+
+.enzyme-panel-heading {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 16px 18px;
+
+    border-bottom:
+        1px solid rgba(148,163,184,.08);
+}
+
+.enzyme-panel-heading > span,
+.enzyme-panel-heading div > span {
+    display: block;
+
+    color: #c4b5fd;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.enzyme-panel-heading small,
+.enzyme-panel-heading div > small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+.enzyme-phase-badge {
+    padding: 7px 11px;
+
+    border:
+        1px solid rgba(167,139,250,.25);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,.16),
+            rgba(96,165,250,.08)
+        );
+
+    color: #ddd6fe;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .11em;
+}
+
+
+/* ============================================================
+   LEFT CONTROLS
+   ============================================================ */
+
+.enzyme-controls-panel {
+    padding-bottom: 17px;
+}
+
+.enzyme-control {
+    padding:
+        15px
+        18px
+        0;
+}
+
+.enzyme-control-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+.enzyme-control-top label {
+    color: #dbeafe;
+
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.enzyme-control-top output {
+    color: #c4b5fd;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.enzyme-control input[type="range"] {
+    width: 100%;
+    height: 5px;
+
+    appearance: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #38bdf8
+        );
+
+    accent-color: #8b5cf6;
+
+    cursor: pointer;
+}
+
+.enzyme-control input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 15px;
+    height: 15px;
+
+    border: 3px solid #0b1220;
+    border-radius: 50%;
+
+    background: #a78bfa;
+
+    box-shadow:
+        0 0 0 3px rgba(167,139,250,.12),
+        0 0 12px rgba(167,139,250,.55);
+}
+
+.enzyme-range-scale {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    color: #475569;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+
+.enzyme-action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    padding:
+        18px
+        18px
+        14px;
+}
+
+.enzyme-action {
+    position: relative;
+
+    min-height: 42px;
+
+    border:
+        1px solid rgba(148,163,184,.12);
+
+    border-radius: 11px;
+
+    color: #e2e8f0;
+
+    background:
+        rgba(30,41,59,.72);
+
+    font-size: 11px;
+    font-weight: 850;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.enzyme-action:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(167,139,250,.4);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.20);
+}
+
+.enzyme-action span {
+    margin-right: 5px;
+}
+
+.enzyme-action-primary {
+    grid-column: 1 / -1;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #8b5cf6 55%,
+            #6366f1
+        );
+
+    border-color:
+        rgba(196,181,253,.25);
+
+    box-shadow:
+        0 10px 28px rgba(124,58,237,.24);
+}
+
+.enzyme-action-primary:hover {
+    box-shadow:
+        0 14px 34px rgba(124,58,237,.33);
+}
+
+.enzyme-gallery-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width:
+        calc(100% - 36px);
+
+    min-height: 42px;
+
+    margin:
+        0 18px 18px;
+
+    border:
+        1px solid rgba(96,165,250,.18);
+
+    border-radius: 11px;
+
+    color: #dbeafe;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15,23,42,.95),
+            rgba(30,41,59,.80)
+        );
+
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+}
+
+.enzyme-gallery-button:hover {
+    transform: translateY(-1px);
+
+    border-color:
+        rgba(96,165,250,.35);
+
+    background:
+        rgba(30,41,59,.95);
+}
+
+
+/* ============================================================
+   CENTER SIMULATION
+   ============================================================ */
+
+.enzyme-simulation-panel {
+    min-width: 0;
+}
+
+.enzyme-simulation-heading {
+    align-items: center;
+}
+
+.enzyme-canvas {
+    position: relative;
+
+    width: 100%;
+    min-height: 500px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(139,92,246,.12),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(56,189,248,.05),
+            transparent 58%
+        ),
+        #020711;
+
+    overflow: hidden;
+}
+
+.enzyme-canvas::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        32px 32px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+}
+
+.enzyme-canvas canvas {
+    position: relative;
+    z-index: 1;
+
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* ============================================================
+   PROCESS TRACK
+   ============================================================ */
+
+.enzyme-process-track {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        14px 16px;
+
+    overflow-x: auto;
+
+    border-top:
+        1px solid rgba(148,163,184,.08);
+
+    border-bottom:
+        1px solid rgba(148,163,184,.08);
+
+    background:
+        rgba(5,12,23,.45);
+}
+
+.enzyme-process-step {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    min-width:
+        max-content;
+
+    color:
+        #475569;
+
+    transition:
+        .25s ease;
+}
+
+.enzyme-process-step span {
+    display: grid;
+    place-items: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        #182234;
+
+    color:
+        #64748b;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.enzyme-process-step strong {
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.enzyme-process-step.is-current {
+    color:
+        #ede9fe;
+}
+
+.enzyme-process-step.is-current span {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a78bfa
+        );
+
+    color:
+        #fff;
+
+    box-shadow:
+        0 0 0 4px rgba(124,58,237,.08),
+        0 0 18px rgba(124,58,237,.45);
+}
+
+.enzyme-process-line {
+    width: 24px;
+    height: 1px;
+
+    flex: 0 0 auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #334155,
+            transparent
+        );
+}
+
+.enzyme-simulation-message {
+    min-height: 46px;
+
+    padding:
+        12px 16px;
+
+    background:
+        rgba(2,7,17,.55);
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+
+/* ============================================================
+   RESULTS
+   ============================================================ */
+
+.enzyme-primary-result {
+    padding:
+        20px
+        18px
+        12px;
+}
+
+.enzyme-primary-result > span {
+    display: block;
+
+    color:
+        #64748b;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .14em;
+}
+
+.enzyme-primary-result strong {
+    display: block;
+
+    margin:
+        6px
+        0
+        11px;
+
+    color:
+        #f5f3ff;
+
+    font-size:
+        38px;
+
+    letter-spacing:
+        -.03em;
+}
+
+.enzyme-result-bar {
+    height:
+        8px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        999px;
+
+    background:
+        #0b1220;
+
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,.5);
+}
+
+.enzyme-result-bar span {
+    display:
+        block;
+
+    width:
+        0%;
+
+    height:
+        100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #a78bfa,
+            #60a5fa
+        );
+
+    box-shadow:
+        0 0 14px rgba(139,92,246,.45);
+
+    transition:
+        width .3s ease;
+}
+
+.enzyme-result-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        8px;
+
+    padding:
+        8px 18px 18px;
+}
+
+.enzyme-result-card {
+    min-height:
+        82px;
+
+    padding:
+        12px;
+
+    border:
+        1px solid rgba(148,163,184,.09);
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.80),
+            rgba(15,23,42,.52)
+        );
+
+    transition:
+        .2s ease;
+}
+
+.enzyme-result-card:hover {
+    border-color:
+        rgba(167,139,250,.23);
+
+    transform:
+        translateY(-1px);
+}
+
+.enzyme-result-card span {
+    display: block;
+
+    color:
+        #64748b;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.4;
+}
+
+.enzyme-result-card strong {
+    display: block;
+
+    margin-top:
+        7px;
+
+    color:
+        #e2e8f0;
+
+    font-size:
+        19px;
+}
+
+.enzyme-reaction-status {
+    margin:
+        0 18px 18px;
+
+    padding:
+        14px;
+
+    border:
+        1px solid rgba(124,58,237,.16);
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,.10),
+            rgba(59,130,246,.04)
+        );
+}
+
+.enzyme-reaction-status > span {
+    display: block;
+
+    color:
+        #a78bfa;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .13em;
+}
+
+.enzyme-reaction-status strong {
+    display: block;
+
+    margin-top:
+        6px;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        14px;
+}
+
+.enzyme-reaction-status p {
+    margin:
+        5px 0 0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.55;
+}
+
+
+/* ============================================================
+   GRAPH
+   ============================================================ */
+
+.enzyme-graph-panel {
+    margin-top:
+        16px;
+}
+
+.enzyme-graph-header {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+    padding:
+        17px 18px 9px;
+}
+
+.enzyme-graph-header span:first-child {
+    display: block;
+
+    color:
+        #a78bfa;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .14em;
+}
+
+.enzyme-graph-header h3 {
+    margin:
+        4px 0 0;
+
+    color:
+        #e2e8f0;
+
+    font-size:
+        17px;
+}
+
+.enzyme-graph-legend {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        10px;
+}
+
+.enzyme-graph-legend i {
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #a78bfa;
+
+    box-shadow:
+        0 0 10px rgba(167,139,250,.65);
+}
+
+#enzyme-graph {
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        250px;
+
+    padding:
+        0 12px 12px;
+}
+
+
+/* ============================================================
+   TEACHER MODE
+   ============================================================ */
+
+.enzyme-teaching-panel {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        14px;
+
+    margin-top:
+        16px;
+
+    padding:
+        18px;
+
+    border:
+        1px solid rgba(148,163,184,.10);
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15,23,42,.88),
+            rgba(49,46,129,.12)
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.18);
+}
+
+.enzyme-teaching-icon {
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    flex:
+        0 0 auto;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(124,58,237,.12);
+
+    border:
+        1px solid rgba(167,139,250,.12);
+
+    font-size:
+        21px;
+}
+
+.enzyme-teaching-content span {
+    display:
+        block;
+
+    color:
+        #a78bfa;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .14em;
+}
+
+.enzyme-teaching-content h3 {
+    margin:
+        5px 0;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        16px;
+}
+
+.enzyme-teaching-content p {
+    max-width:
+        900px;
+
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.65;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1180px) {
+
+    .enzyme-lab-grid {
+        grid-template-columns:
+            240px
+            minmax(360px, 1fr);
+    }
+
+    .enzyme-results-panel {
+        grid-column:
+            1 / -1;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .enzyme-lab {
+        padding:
+            16px;
+    }
+
+    .enzyme-lab-header {
+        flex-direction:
+            column;
+    }
+
+    .enzyme-live-status {
+        align-self:
+            flex-start;
+    }
+
+    .enzyme-lab-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .enzyme-results-panel {
+        grid-column:
+            auto;
+    }
+
+    .enzyme-canvas {
+        min-height:
+            420px;
+    }
+
+}
+
+
+@media (max-width: 540px) {
+
+    .enzyme-lab-heading h2 {
+        font-size:
+            28px;
+    }
+
+    .enzyme-action-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .enzyme-action-primary {
+        grid-column:
+            auto;
+    }
+
+    .enzyme-result-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .enzyme-process-track {
+        padding:
+            12px;
+    }
+
+}
+
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+
+@keyframes enzyme-pulse {
+
+    0%,
+    100% {
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+        opacity:
+            .45;
+
+        transform:
+            scale(.82);
+    }
+
+}
+/* ============================================================
+   SCILAB BIOLOGY GALLERY
+   Thumbnail Grid + Large Selected Image
+   ============================================================ */
+
+.biology-simulation-stage {
+    position: relative;
+    min-width: 0;
+}
+
+
+/* ============================================================
+   GALLERY CONTAINER
+   ============================================================ */
+
+.biology-simulation-stage .biology-gallery-page {
+    width: 100%;
+    height: 680px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 27, 47, 0.98),
+            rgba(4, 10, 20, 0.99)
+        );
+
+    border: 1px solid rgba(96, 165, 250, 0.16);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.30);
+}
+
+
+.biology-gallery-page[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.biology-gallery-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px 14px;
+}
+
+
+.biology-gallery-page-header h2 {
+    margin: 5px 0 4px;
+
+    color: #f8fafc;
+
+    font-size: 25px;
+}
+
+
+.biology-gallery-page-header p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   LARGE IMAGE AREA
+   ============================================================ */
+
+.biology-gallery-feature {
+    display: grid;
+
+    grid-template-columns:
+        48px
+        minmax(0, 1fr)
+        48px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    height: 440px;
+
+    padding:
+        0 18px 12px;
+}
+
+
+.biology-gallery-feature-image-wrap {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(36, 86, 130, 0.22),
+            rgba(2, 8, 18, 0.98) 72%
+        );
+
+    border:
+        1px solid rgba(148, 163, 184, 0.10);
+}
+
+
+/* ============================================================
+   MAIN IMAGE
+   ============================================================ */
+
+.biology-gallery-main-image {
+    display: block;
+
+    max-width: 88%;
+    max-height: 84%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    user-select: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease;
+}
+
+
+.biology-gallery-main-image[src=""] {
+    display: none;
+}
+
+
+/* ============================================================
+   IMAGE CAPTION
+   ============================================================ */
+
+.biology-gallery-image-caption {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+        45px 22px 18px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(2, 8, 18, 0.96),
+            rgba(2, 8, 18, 0)
+        );
+}
+
+
+.biology-gallery-image-caption h3 {
+    margin: 0 0 5px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+
+.biology-gallery-image-caption p {
+    margin: 0;
+
+    max-width: 800px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+/* ============================================================
+   PREVIOUS / NEXT
+   ============================================================ */
+
+.biology-gallery-nav {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(148, 163, 184, 0.16);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 23, 42, 0.88);
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.biology-gallery-nav:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(30, 64, 100, 0.95);
+
+    border-color:
+        #38bdf8;
+}
+
+
+/* ============================================================
+   THUMBNAIL GRID
+   ============================================================ */
+
+.biology-gallery-page-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 10px;
+
+    padding:
+        0 18px 18px;
+}
+
+
+/* ============================================================
+   THUMBNAIL
+   ============================================================ */
+
+.biology-gallery-page-item {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.11);
+
+    border-radius: 11px;
+
+    background:
+        rgba(15, 23, 42, 0.82);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.biology-gallery-page-item:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(96, 165, 250, 0.45);
+}
+
+
+.biology-gallery-page-item.is-active {
+    border-color:
+        #38bdf8;
+
+    box-shadow:
+        0 0 0 1px
+        rgba(56, 189, 248, 0.25),
+
+        0 8px 25px
+        rgba(56, 189, 248, 0.08);
+}
+
+
+/* ============================================================
+   THUMBNAIL IMAGE
+   ============================================================ */
+
+.biology-gallery-page-item img {
+    display: block;
+
+    width: 100%;
+
+    height: 78px;
+
+    object-fit: cover;
+
+    background:
+        #091525;
+}
+
+
+/* ============================================================
+   THUMBNAIL TITLE
+   ============================================================ */
+
+.biology-gallery-page-item span {
+    display: block;
+
+    padding:
+        6px 7px;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 950px) {
+
+    .biology-simulation-stage .biology-gallery-page {
+        height: 610px;
+    }
+
+    .biology-gallery-feature {
+        height: 385px;
+    }
+
+    .biology-gallery-page-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .biology-simulation-stage .biology-gallery-page {
+        height: 540px;
+    }
+
+    .biology-gallery-page-header {
+        padding:
+            18px 16px 10px;
+    }
+
+    .biology-gallery-page-header h2 {
+        font-size: 21px;
+    }
+
+    .biology-gallery-feature {
+        height: 325px;
+
+        grid-template-columns:
+            36px
+            minmax(0, 1fr)
+            36px;
+
+        padding:
+            0 10px 10px;
+    }
+
+    .biology-gallery-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .biology-gallery-page-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 7px;
+    }
+
+    .biology-gallery-page-item img {
+        height: 62px;
+    }
+
+}
+/* ============================================================
+   SCILAB BIOLOGY — PHOTOSYNTHESIS LABORATORY
+   ============================================================ */
+
+.photosynthesis-lab {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 28px;
+    box-sizing: border-box;
+
+    color: #f8fafc;
+
+    background:
+        radial-gradient(
+            circle at 12% 0%,
+            rgba(74, 222, 128, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 15%,
+            rgba(56, 189, 248, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(132, 204, 22, 0.08),
+            transparent 30%
+        );
+
+    border-radius: 28px;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.photosynthesis-lab-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-bottom: 22px;
+}
+
+
+.photosynthesis-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 9px;
+
+    color: #86efac;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+
+.photosynthesis-kicker::before {
+    content: "";
+
+    width: 22px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e,
+            #38bdf8
+        );
+}
+
+
+.photosynthesis-lab-header h2 {
+    margin: 0;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            46px
+        );
+
+    line-height: 1.04;
+
+    letter-spacing: -0.03em;
+
+    color: #f8fafc;
+}
+
+
+.photosynthesis-lab-header p {
+    max-width: 850px;
+
+    margin: 10px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.photosynthesis-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 100px;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(74, 222, 128, 0.28);
+
+    background:
+        rgba(34, 197, 94, 0.08);
+
+    color: #86efac;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.13em;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.18);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* ============================================================
+   TOOLBAR
+   ============================================================ */
+
+.photosynthesis-toolbar {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+
+.photosynthesis-control {
+    min-height: 42px;
+
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        rgba(148,163,184,.16);
+
+    border-radius: 12px;
+
+    background:
+        rgba(15,23,42,.86);
+
+    color:
+        #dbeafe;
+
+    font-size: 12px;
+
+    font-weight: 850;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.photosynthesis-control:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(56,189,248,.45);
+
+    background:
+        rgba(30,41,59,.95);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0,0,0,.22);
+}
+
+
+.photosynthesis-control:active {
+    transform:
+        translateY(0);
+}
+
+
+.photosynthesis-control.primary {
+    color: #fff;
+
+    border-color:
+        rgba(134,239,172,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e 55%,
+            #0ea5e9
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(34,197,94,.22);
+}
+
+
+.photosynthesis-control.primary:hover {
+    filter:
+        brightness(1.08);
+}
+
+
+/* ============================================================
+   PROCESS TRACK
+   ============================================================ */
+
+.photosynthesis-stage-track {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        14px 16px;
+
+    margin-bottom: 16px;
+
+    overflow-x: auto;
+
+    border:
+        1px solid
+        rgba(148,163,184,.10);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.86),
+            rgba(5,12,23,.92)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.025);
+}
+
+
+.photosynthesis-stage-step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: max-content;
+
+    color: #475569;
+
+    transition:
+        .25s ease;
+}
+
+
+.photosynthesis-stage-step span {
+    display: grid;
+
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background:
+        #172033;
+
+    color:
+        #64748b;
+
+    font-size: 9px;
+
+    font-weight: 900;
+}
+
+
+.photosynthesis-stage-step strong {
+    font-size: 10px;
+
+    font-weight: 850;
+
+    text-transform: uppercase;
+
+    letter-spacing: .04em;
+}
+
+
+.photosynthesis-stage-step.active {
+    color: #ecfdf5;
+}
+
+
+.photosynthesis-stage-step.active span {
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e
+        );
+
+    color: white;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(34,197,94,.08),
+
+        0 0 22px
+        rgba(34,197,94,.42);
+}
+
+
+.photosynthesis-stage-step.completed {
+    color:
+        #86efac;
+}
+
+
+.photosynthesis-stage-step.completed span {
+    background:
+        rgba(34,197,94,.16);
+
+    color:
+        #86efac;
+}
+
+
+.photosynthesis-stage-line {
+    width: 28px;
+    height: 1px;
+
+    flex:
+        0 0 auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #334155,
+            transparent
+        );
+}
+
+
+/* ============================================================
+   MAIN WORKSPACE
+   ============================================================ */
+
+.photosynthesis-workspace {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+    gap: 16px;
+
+    align-items: stretch;
+}
+
+
+/* ============================================================
+   SIMULATION PANEL
+   ============================================================ */
+
+.photosynthesis-simulation-panel {
+    min-width: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(148,163,184,.12);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.94),
+            rgba(3,10,20,.98)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.025),
+
+        0 22px 60px
+        rgba(0,0,0,.30);
+}
+
+
+/* ============================================================
+   SIMULATION HEADER
+   ============================================================ */
+
+.photosynthesis-simulation-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding:
+        15px 18px;
+
+    border-bottom:
+        1px solid
+        rgba(148,163,184,.08);
+
+    background:
+        rgba(5,12,23,.55);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+
+.photosynthesis-simulation-header span:first-child {
+    color:
+        #86efac;
+}
+
+
+.photosynthesis-simulation-header span:last-child {
+    color:
+        #94a3b8;
+
+    letter-spacing:
+        .05em;
+}
+
+
+/* ============================================================
+   3D CANVAS
+   ============================================================ */
+
+.photosynthesis-canvas {
+    position: relative;
+
+    width: 100%;
+
+    height:
+        min(
+            68vh,
+            650px
+        );
+
+    min-height: 500px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(34,197,94,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(56,189,248,.08),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(120,53,15,.10),
+            transparent 40%
+        ),
+        #020711;
+}
+
+
+/* subtle grid */
+
+.photosynthesis-canvas::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        34px 34px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 18%,
+            black 82%,
+            transparent
+        );
+}
+
+
+.photosynthesis-canvas canvas {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    outline: none;
+
+    touch-action: none;
+}
+
+
+/* ============================================================
+   CAPTION
+   ============================================================ */
+
+.photosynthesis-caption {
+    min-height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        12px 18px;
+
+    border-top:
+        1px solid
+        rgba(148,163,184,.08);
+
+    background:
+        rgba(2,7,17,.58);
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+
+#photosynthesis-message {
+    color:
+        #cbd5e1;
+}
+
+
+/* ============================================================
+   RESULTS PANEL
+   ============================================================ */
+
+.photosynthesis-results {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(148,163,184,.12);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.96),
+            rgba(5,12,23,.98)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.025),
+
+        0 22px 60px
+        rgba(0,0,0,.28);
+}
+
+
+.photosynthesis-results::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(34,197,94,.08),
+            transparent 40%
+        );
+}
+
+
+/* ============================================================
+   RESULT HEADER
+   ============================================================ */
+
+.photosynthesis-results-header {
+    position: relative;
+
+    z-index: 2;
+
+    padding-bottom: 16px;
+
+    margin-bottom: 8px;
+
+    border-bottom:
+        1px solid
+        rgba(148,163,184,.08);
+}
+
+
+.photosynthesis-results-header span {
+    display: block;
+
+    color:
+        #86efac;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .15em;
+}
+
+
+.photosynthesis-results-header strong {
+    display: block;
+
+    margin-top:
+        5px;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        18px;
+}
+
+
+/* ============================================================
+   RESULT CARDS
+   ============================================================ */
+
+.photosynthesis-result-card {
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        13px 14px;
+
+    margin-top:
+        9px;
+
+    border:
+        1px solid
+        rgba(148,163,184,.08);
+
+    border-radius:
+        14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.82),
+            rgba(15,23,42,.46)
+        );
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+
+.photosynthesis-result-card:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(74,222,128,.22);
+}
+
+
+.photosynthesis-result-card span {
+    display: block;
+
+    color:
+        #64748b;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .13em;
+}
+
+
+.photosynthesis-result-card h3 {
+    margin:
+        7px 0 5px;
+
+    color:
+        #f1f5f9;
+
+    font-size:
+        14px;
+}
+
+
+.photosynthesis-result-card p {
+    margin: 0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+}
+
+
+/* ============================================================
+   EQUATION
+   ============================================================ */
+
+.photosynthesis-equation {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top:
+        12px;
+
+    padding:
+        17px 14px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(34,197,94,.14);
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34,197,94,.08),
+            rgba(14,165,233,.05)
+        );
+}
+
+
+.photosynthesis-equation span {
+    display:
+        block;
+
+    margin-bottom:
+        9px;
+
+    color:
+        #86efac;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .15em;
+}
+
+
+.photosynthesis-equation strong {
+    display:
+        block;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        15px;
+}
+
+
+.photosynthesis-equation div {
+    margin:
+        7px 0;
+
+    color:
+        #4ade80;
+
+    font-size:
+        19px;
+
+    font-weight:
+        900;
+}
+
+
+/* ============================================================
+   PRODUCTION
+   ============================================================ */
+
+.photosynthesis-production-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:
+        9px;
+
+    margin-top:
+        10px;
+}
+
+
+.photosynthesis-production-grid > div {
+    padding:
+        13px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(148,163,184,.08);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(15,23,42,.72);
+}
+
+
+.photosynthesis-production-grid span {
+    display:
+        block;
+
+    color:
+        #64748b;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .12em;
+}
+
+
+.photosynthesis-production-grid strong {
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        #f8fafc;
+
+    font-size:
+        24px;
+}
+
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+
+.photosynthesis-lab .biology-gallery-page {
+    width: 100%;
+
+    margin-top: 16px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .photosynthesis-workspace {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .photosynthesis-results {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            10px;
+    }
+
+
+    .photosynthesis-results-header {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .photosynthesis-equation {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .photosynthesis-production-grid {
+        grid-column:
+            1 / -1;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .photosynthesis-lab {
+        padding:
+            20px;
+    }
+
+
+    .photosynthesis-lab-header {
+        flex-direction:
+            column;
+    }
+
+
+    .photosynthesis-status {
+        align-self:
+            flex-start;
+    }
+
+
+    .photosynthesis-canvas {
+        height:
+            560px;
+
+        min-height:
+            460px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .photosynthesis-lab {
+        padding:
+            14px;
+    }
+
+
+    .photosynthesis-lab-header h2 {
+        font-size:
+            28px;
+    }
+
+
+    .photosynthesis-stage-track {
+        padding:
+            11px 12px;
+    }
+
+
+    .photosynthesis-canvas {
+        height:
+            450px;
+
+        min-height:
+            400px;
+    }
+
+
+    .photosynthesis-results {
+        display:
+            block;
+    }
+
+
+    .photosynthesis-result-card,
+    .photosynthesis-equation,
+    .photosynthesis-production-grid {
+        margin-top:
+            10px;
+    }
+
+}
+.photosynthesis-video-panel {
+
+    max-width: 1400px;
+
+    margin:
+        24px auto 0;
+
+    padding: 24px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 31, 40, .96),
+            rgba(3, 12, 22, .98)
+        );
+
+    border:
+        1px solid
+        rgba(103,232,249,.14);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.35);
+
+}
+
+
+.photosynthesis-video-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.photosynthesis-video-header span:first-child {
+
+    color:
+        #67e8f9;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .16em;
+
+}
+
+
+.photosynthesis-video-header h2 {
+
+    margin:
+        7px 0;
+
+    font-size:
+        28px;
+
+}
+
+
+.photosynthesis-video-header p {
+
+    margin: 0;
+
+    color:
+        #94a3b8;
+
+    line-height:
+        1.6;
+
+}
+
+
+.photosynthesis-video-badge {
+
+    padding:
+        8px 12px;
+
+    border-radius:
+        999px;
+
+    border:
+        1px solid
+        rgba(74,222,128,.25);
+
+    background:
+        rgba(74,222,128,.08);
+
+    color:
+        #86efac;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    white-space:
+        nowrap;
+
+}
+
+
+.photosynthesis-video-frame {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    border-radius:
+        18px;
+
+    background:
+        #020617;
+
+}
+
+
+.photosynthesis-video-frame iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+
+}

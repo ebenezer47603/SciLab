@@ -1,0 +1,953 @@
+/* ============================================================
+   SciLab Molecule Builder
+   moleculeBuilder.css
+   ============================================================ */
+
+.molecule-builder-page {
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 220, 255, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #06111f,
+            #0a1929 50%,
+            #06101c
+        );
+
+    color: #ffffff;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.molecule-builder-header {
+    margin-bottom: 22px;
+}
+
+.molecule-builder-header h1 {
+    margin: 8px 0;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+.molecule-builder-header p {
+    margin: 0;
+
+    color: #aebfd1;
+
+    font-size: 15px;
+}
+
+.molecule-builder-badge {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgba(0, 220, 255, 0.35);
+
+    border-radius: 999px;
+
+    background: rgba(0, 220, 255, 0.08);
+
+    color: #67e8f9;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+.molecule-builder-layout {
+    display: grid;
+
+    grid-template-columns:
+        300px
+        minmax(0, 1fr);
+
+    gap: 18px;
+
+    min-height: 650px;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.molecule-builder-sidebar {
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    background:
+        rgba(10, 25, 42, 0.88);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(12px);
+}
+
+.control-section {
+    margin-bottom: 24px;
+}
+
+.control-section h2 {
+    margin: 0 0 12px;
+
+    font-size: 17px;
+}
+
+.control-section label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9fb2c6;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   SELECT
+   ============================================================ */
+
+#molecule-select {
+    width: 100%;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #101f31;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+#molecule-select:focus {
+    border-color: #22d3ee;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.molecule-btn {
+    width: 100%;
+
+    margin-top: 9px;
+
+    padding: 11px 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16283c,
+            #20384f
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.molecule-btn:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.2);
+}
+
+.molecule-btn:active {
+    transform: translateY(0);
+}
+
+.molecule-btn.primary {
+    background:
+        linear-gradient(
+            135deg,
+            #0891b2,
+            #2563eb
+        );
+}
+
+
+/* ============================================================
+   INFORMATION
+   ============================================================ */
+
+.molecule-info {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.molecule-info h2 {
+    margin-top: 0;
+
+    font-size: 17px;
+}
+
+.molecule-info p {
+    color: #b5c5d5;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   3D AREA
+   ============================================================ */
+
+.molecule-builder-main {
+    min-width: 0;
+}
+
+.molecule-engine-container {
+    position: relative;
+
+    width: 100%;
+    height: 650px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #102b42,
+            #050d17 70%
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.35);
+}
+
+.molecule-engine-container canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+
+.engine-loading {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    pointer-events: none;
+
+    color: #8fa6bb;
+}
+
+.engine-loading span {
+    font-size: 48px;
+
+    margin-bottom: 8px;
+}
+
+.engine-loading p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   TEACHER PANEL
+   ============================================================ */
+
+.molecule-teacher-panel {
+    margin-top: 18px;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    background:
+        rgba(10, 25, 42, 0.88);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.2);
+}
+
+.teacher-title {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+}
+
+.teacher-title > span {
+    font-size: 30px;
+}
+
+.teacher-title h2 {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+}
+
+.teacher-title p {
+    margin: 0;
+
+    color: #91a6ba;
+
+    font-size: 13px;
+}
+
+.teacher-info {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    color: #c7d5e3;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   MOLECULE DATA DISPLAY
+   ============================================================ */
+
+.molecule-name {
+    color: #67e8f9;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.molecule-formula {
+    margin-left: 7px;
+
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.molecule-geometry {
+    margin-top: 10px;
+
+    color: #a5f3fc;
+
+    font-weight: 700;
+}
+
+.molecule-angle {
+    margin-top: 5px;
+
+    color: #f0abfc;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .molecule-builder-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .molecule-builder-sidebar {
+        order: 2;
+    }
+
+    .molecule-builder-main {
+        order: 1;
+    }
+
+    .molecule-engine-container {
+        height: 550px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .molecule-builder-page {
+        padding: 14px;
+    }
+
+    .molecule-builder-header h1 {
+        font-size: 27px;
+    }
+
+    .molecule-engine-container {
+        height: 450px;
+
+        border-radius: 14px;
+    }
+
+    .molecule-builder-sidebar,
+    .molecule-teacher-panel {
+        border-radius: 14px;
+    }
+}
+/* =========================================================
+   MOLECULE BUILDER BUTTONS
+========================================================= */
+
+.molecule-btn {
+    width: 100%;
+    min-height: 48px;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 16px;
+
+    margin-bottom: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: white;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #17324f,
+        #244563
+    );
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+}
+
+
+/* Hover */
+
+.molecule-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+}
+
+
+/* Click */
+
+.molecule-btn:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* Build */
+
+.molecule-btn.primary {
+
+    background: linear-gradient(
+        135deg,
+        #08a7c9,
+        #2864e8
+    );
+
+}
+
+
+/* Active button */
+
+.molecule-btn.active-button {
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 0 2px rgba(
+            0,
+            220,
+            255,
+            0.45
+        ),
+        0 8px 25px rgba(
+            0,
+            180,
+            255,
+            0.25
+        );
+
+}
+
+
+/* Play */
+
+#play-molecule {
+
+    background: linear-gradient(
+        135deg,
+        #11998e,
+        #38ef7d
+    );
+
+}
+
+
+/* Pause */
+
+#pause-molecule {
+
+    background: linear-gradient(
+        135deg,
+        #ff9966,
+        #ff5e62
+    );
+
+}
+
+
+/* Reset */
+
+#reset-molecule {
+
+    background: linear-gradient(
+        135deg,
+        #34495e,
+        #1f3348
+    );
+
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.molecule-information {
+
+    line-height: 1.55;
+}
+
+.molecule-information h2 {
+
+    margin-top: 0;
+
+    font-size: 20px;
+}
+
+.molecule-information p {
+
+    margin: 7px 0;
+}
+
+.molecule-description {
+
+    color: #b9c9d8;
+}
+
+
+/* =========================================================
+   TEACHER PANEL
+========================================================= */
+
+.teacher-explanation {
+
+    line-height: 1.6;
+}
+
+.teacher-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                120px,
+                1fr
+            )
+        );
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.teacher-grid > div {
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+}
+
+.teacher-grid span {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #9eb0c3;
+
+    margin-bottom: 5px;
+}
+
+.teacher-grid strong {
+
+    display: block;
+
+    color: white;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .teacher-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+    }
+
+}
+/* ============================================================
+   3D MOLECULE DASHBOARD
+   ============================================================ */
+
+.molecule-engine-container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   TOP 3D DASHBOARD
+   ============================================================ */
+
+.molecule-3d-dashboard {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 20;
+
+    min-width: 300px;
+    max-width: 390px;
+
+    padding: 16px 18px;
+
+    border-radius: 18px;
+
+    background: rgba(5, 15, 30, 0.88);
+
+    border: 1px solid rgba(100, 220, 255, 0.35);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.45),
+        inset 0 0 25px rgba(0, 200, 255, 0.05);
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+
+.molecule-3d-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.molecule-3d-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 220, 255, 0.12);
+
+    font-size: 22px;
+}
+
+
+.molecule-3d-name {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+.molecule-3d-formula {
+    margin-top: 3px;
+
+    font-size: 14px;
+
+    color: #8bdfff;
+
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   PROPERTIES
+   ============================================================ */
+
+.molecule-3d-properties {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+}
+
+
+.molecule-3d-property {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-height: 68px;
+
+    padding: 10px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.property-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 200, 255, 0.12);
+
+    font-size: 17px;
+}
+
+
+.molecule-3d-property small {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    color: #91a9ba;
+}
+
+
+.molecule-3d-property strong {
+    display: block;
+
+    font-size: 14px;
+
+    line-height: 1.2;
+
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   BUTTON ACTIVE STATE
+   ============================================================ */
+
+.molecule-btn.active {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 18px rgba(0, 220, 255, 0.35);
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .molecule-3d-dashboard {
+        top: 10px;
+        left: 10px;
+
+        right: 10px;
+
+        min-width: auto;
+        max-width: none;
+
+        padding: 12px;
+    }
+
+
+    .molecule-3d-properties {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .molecule-3d-name {
+        font-size: 17px;
+    }
+
+
+    .molecule-3d-property {
+        min-height: 60px;
+    }
+}

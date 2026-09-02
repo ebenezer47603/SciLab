@@ -1,0 +1,2654 @@
+/* ============================================================
+   SciLab - Home Page
+   Home.css
+   Premium Interactive Science Landing Page
+   ============================================================ */
+
+
+/* ============================================================
+   ROOT
+   ============================================================ */
+
+.scilab-home {
+    --home-bg: #050b14;
+    --home-bg-2: #081321;
+    --home-bg-3: #0b1728;
+
+    --home-text: #f7fbff;
+    --home-muted: #91a4bb;
+
+    --home-blue: #42a5ff;
+    --home-cyan: #38e1ff;
+    --home-purple: #9a7cff;
+    --home-green: #45e6a5;
+    --home-orange: #ff9b6a;
+
+    --home-border: rgba(255, 255, 255, 0.09);
+
+    --home-card:
+        linear-gradient(
+            145deg,
+            rgba(17, 35, 57, 0.82),
+            rgba(7, 18, 31, 0.88)
+        );
+
+    --home-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.38);
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    color: var(--home-text);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(56, 225, 255, 0.05),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(154, 124, 255, 0.05),
+            transparent 30%
+        ),
+        var(--home-bg);
+
+    box-sizing: border-box;
+}
+
+
+.scilab-home *,
+.scilab-home *::before,
+.scilab-home *::after {
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.home-hero {
+    position: relative;
+
+    min-height: 820px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        90px
+        6%
+        100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(56, 225, 255, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 82% 45%,
+            rgba(154, 124, 255, 0.10),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #050b14,
+            #071321 50%,
+            #050a13
+        );
+}
+
+
+/* ============================================================
+   HERO BACKGROUND
+   ============================================================ */
+
+.hero-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   HERO GRID
+   ============================================================ */
+
+.hero-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.16;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        55px 55px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 10%,
+            transparent 75%
+        );
+
+    -webkit-mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 10%,
+            transparent 75%
+        );
+}
+
+
+/* ============================================================
+   HERO GLOWS
+   ============================================================ */
+
+.hero-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+.glow-one {
+    width: 500px;
+    height: 500px;
+
+    left: -220px;
+    top: 100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 225, 255, 0.16),
+            transparent 70%
+        );
+
+    animation:
+        glowMoveOne 8s ease-in-out infinite;
+}
+
+
+.glow-two {
+    width: 600px;
+    height: 600px;
+
+    right: -260px;
+    bottom: -200px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(154, 124, 255, 0.17),
+            transparent 70%
+        );
+
+    animation:
+        glowMoveTwo 10s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   HERO INNER
+   ============================================================ */
+
+.hero-inner {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1400px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(500px, 0.9fr);
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+
+/* ============================================================
+   HERO TEXT
+   ============================================================ */
+
+.hero-text {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 720px;
+}
+
+
+/* ============================================================
+   HERO BADGE
+   ============================================================ */
+
+.hero-badge {
+    width: fit-content;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        9px
+        15px;
+
+    margin-bottom: 27px;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.20);
+
+    border-radius: 999px;
+
+    color: #8eeeff;
+
+    background:
+        rgba(56, 225, 255, 0.055);
+
+    box-shadow:
+        0 0 35px
+        rgba(56, 225, 255, 0.06);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+/* ============================================================
+   BADGE DOT
+   ============================================================ */
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--home-cyan);
+
+    box-shadow:
+        0 0 12px
+        var(--home-cyan);
+
+    animation:
+        badgePulse 2s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   HERO TITLE
+   ============================================================ */
+
+.hero-text h1 {
+    margin: 0;
+
+    color: #f8fbff;
+
+    font-size:
+        clamp(52px, 6vw, 88px);
+
+    line-height: 0.98;
+
+    font-weight: 850;
+
+    letter-spacing:
+        -0.055em;
+}
+
+
+.hero-text h1 span {
+    position: relative;
+
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--home-cyan),
+            var(--home-blue),
+            var(--home-purple)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ============================================================
+   HERO DESCRIPTION
+   ============================================================ */
+
+.hero-description {
+    max-width: 650px;
+
+    margin:
+        30px 0 0;
+
+    color: var(--home-muted);
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   HERO ACTIONS
+   ============================================================ */
+
+.hero-actions {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-top: 35px;
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+
+.home-primary-btn {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    min-height: 52px;
+
+    padding:
+        0
+        21px;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.25);
+
+    border-radius: 15px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56, 225, 255, 0.17),
+            rgba(66, 165, 255, 0.12)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.25);
+
+    font-size: 14px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.home-primary-btn::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    left: -120px;
+    top: -30px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    filter: blur(15px);
+
+    transition:
+        left 0.6s ease;
+}
+
+
+.home-primary-btn:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(56, 225, 255, 0.45);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.35),
+        0 0 30px
+        rgba(56, 225, 255, 0.08);
+}
+
+
+.home-primary-btn:hover::before {
+    left: 110%;
+}
+
+
+.btn-arrow {
+    font-size: 21px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.home-primary-btn:hover .btn-arrow {
+    transform:
+        translateX(5px);
+}
+
+
+/* ============================================================
+   SECONDARY BUTTON
+   ============================================================ */
+
+.home-secondary-btn {
+    min-height: 52px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        0
+        19px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 15px;
+
+    color: #d9e7f6;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.home-secondary-btn:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255, 255, 255, 0.065);
+
+    border-color:
+        rgba(255, 255, 255, 0.17);
+}
+
+
+/* ============================================================
+   HERO META
+   ============================================================ */
+
+.hero-meta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top: 55px;
+}
+
+
+.hero-meta-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.hero-meta-item strong {
+    color: #ffffff;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+
+.hero-meta-item span {
+    color:
+        rgba(145, 164, 187, 0.85);
+
+    font-size: 11px;
+
+    font-weight: 650;
+
+    letter-spacing: 0.04em;
+}
+
+
+.hero-meta-divider {
+    width: 1px;
+    height: 35px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+/* ============================================================
+   HERO VISUAL
+   ============================================================ */
+
+.hero-visual {
+    position: relative;
+
+    width: min(620px, 100%);
+
+    height: 610px;
+
+    margin:
+        0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ============================================================
+   SCIENCE ORBITS
+   ============================================================ */
+
+.science-orbit {
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.15);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-18deg);
+}
+
+
+.orbit-one {
+    width: 330px;
+    height: 330px;
+
+    animation:
+        orbitRotateOne 14s linear infinite;
+}
+
+
+.orbit-two {
+    width: 450px;
+    height: 210px;
+
+    border-color:
+        rgba(154, 124, 255, 0.17);
+
+    transform:
+        rotate(48deg);
+
+    animation:
+        orbitRotateTwo 18s linear infinite;
+}
+
+
+.orbit-three {
+    width: 520px;
+    height: 280px;
+
+    border-color:
+        rgba(69, 230, 165, 0.10);
+
+    transform:
+        rotate(-58deg);
+
+    animation:
+        orbitRotateThree 22s linear infinite;
+}
+
+
+/* ============================================================
+   ORBIT GLOW
+   ============================================================ */
+
+.science-orbit::before {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--home-cyan);
+
+    box-shadow:
+        0 0 15px
+        var(--home-cyan);
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* ============================================================
+   SCIENCE CORE
+   ============================================================ */
+
+.science-core {
+    position: relative;
+
+    z-index: 4;
+
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.25);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(56, 225, 255, 0.20),
+            rgba(12, 28, 47, 0.95) 58%,
+            rgba(6, 15, 27, 0.98)
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(56, 225, 255, 0.10),
+        inset 0 0 40px
+        rgba(56, 225, 255, 0.07);
+
+    animation:
+        coreFloat 4s ease-in-out infinite;
+}
+
+
+.science-core::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -14px;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.10);
+
+    border-radius: 50%;
+
+    animation:
+        corePulse 3s ease-in-out infinite;
+}
+
+
+.science-core::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 28px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 225, 255, 0.13),
+            transparent 70%
+        );
+
+    filter: blur(10px);
+}
+
+
+.core-inner {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 70px;
+
+    color: #e9fbff;
+
+    text-shadow:
+        0 0 25px
+        rgba(56, 225, 255, 0.75);
+
+    animation:
+        coreSymbol 4s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   FLOATING SCIENCE CARDS
+   ============================================================ */
+
+.floating-science {
+    position: absolute;
+
+    z-index: 7;
+
+    min-width: 185px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        13px
+        15px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    border-radius: 17px;
+
+    background:
+        rgba(9, 22, 37, 0.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.28);
+
+    animation:
+        floatingCard 5s ease-in-out infinite;
+}
+
+
+.floating-one {
+    left: 8px;
+    top: 145px;
+
+    animation-delay:
+        -1s;
+}
+
+
+.floating-two {
+    right: 5px;
+    top: 270px;
+
+    animation-delay:
+        -2.5s;
+}
+
+
+.floating-three {
+    left: 40px;
+    bottom: 100px;
+
+    animation-delay:
+        -4s;
+}
+
+
+.science-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    font-size: 21px;
+}
+
+
+.floating-science strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #f3f8ff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.floating-science small {
+    display: block;
+
+    color: #8297ae;
+
+    font-size: 10px;
+
+    line-height: 1.3;
+}
+
+
+/* ============================================================
+   FLOATING PARTICLES
+   ============================================================ */
+
+.floating-particle {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--home-cyan);
+
+    box-shadow:
+        0 0 15px
+        rgba(56, 225, 255, 0.9);
+
+    animation:
+        particleFloat 5s ease-in-out infinite;
+}
+
+
+.particle-one {
+    left: 15%;
+    top: 20%;
+}
+
+
+.particle-two {
+    right: 16%;
+    top: 15%;
+
+    animation-delay:
+        -1s;
+}
+
+
+.particle-three {
+    right: 18%;
+    bottom: 20%;
+
+    animation-delay:
+        -2s;
+}
+
+
+.particle-four {
+    left: 25%;
+    bottom: 16%;
+
+    animation-delay:
+        -3s;
+}
+
+
+/* ============================================================
+   LABORATORIES
+   ============================================================ */
+
+.home-labs {
+    position: relative;
+
+    padding:
+        120px
+        6%
+        130px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #050b14,
+            #071321
+        );
+}
+
+
+/* ============================================================
+   SECTION HEADING
+   ============================================================ */
+
+.home-section-heading {
+    width: min(1250px, 100%);
+
+    margin:
+        0 auto 55px;
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+
+.section-kicker {
+    display: inline-block;
+
+    margin-bottom: 13px;
+
+    color:
+        var(--home-cyan);
+
+    font-size: 11px;
+
+    font-weight: 850;
+
+    letter-spacing:
+        0.17em;
+}
+
+
+.home-section-heading h2 {
+    margin: 0;
+
+    color:
+        #f6faff;
+
+    font-size:
+        clamp(35px, 5vw, 57px);
+
+    line-height: 1.05;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.home-section-heading h2 span {
+    background:
+        linear-gradient(
+            90deg,
+            var(--home-cyan),
+            var(--home-purple)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.home-section-heading > p {
+    max-width: 330px;
+
+    margin: 0;
+
+    color:
+        var(--home-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   LAB GRID
+   ============================================================ */
+
+.labs-grid {
+    width: min(1250px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* ============================================================
+   LAB CARD
+   ============================================================ */
+
+.lab-card {
+    position: relative;
+
+    min-height: 430px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+        30px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--home-border);
+
+    border-radius: 25px;
+
+    background:
+        var(--home-card);
+
+    box-shadow:
+        var(--home-shadow);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.lab-card:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 35px 90px
+        rgba(0, 0, 0, 0.48);
+}
+
+
+/* ============================================================
+   LAB CARD GLOW
+   ============================================================ */
+
+.lab-card-glow {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -140px;
+    top: -140px;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    opacity: 0.18;
+
+    pointer-events: none;
+}
+
+
+.physics-lab .lab-card-glow {
+    background:
+        radial-gradient(
+            circle,
+            var(--home-blue),
+            transparent 70%
+        );
+}
+
+
+.chemistry-lab .lab-card-glow {
+    background:
+        radial-gradient(
+            circle,
+            var(--home-orange),
+            transparent 70%
+        );
+}
+
+
+.biology-lab .lab-card-glow {
+    background:
+        radial-gradient(
+            circle,
+            var(--home-green),
+            transparent 70%
+        );
+}
+
+
+/* ============================================================
+   CARD HEADER
+   ============================================================ */
+
+.lab-card-header {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 50px;
+}
+
+
+.lab-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 19px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    font-size: 29px;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.lab-card:hover .lab-icon {
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+
+.lab-number {
+    color:
+        rgba(255, 255, 255, 0.25);
+
+    font-size: 12px;
+
+    font-weight: 850;
+
+    letter-spacing:
+        0.16em;
+}
+
+
+/* ============================================================
+   LAB CARD BODY
+   ============================================================ */
+
+.lab-card-body {
+    position: relative;
+
+    z-index: 2;
+
+    flex: 1;
+}
+
+
+.lab-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color:
+        #7890aa;
+
+    font-size: 10px;
+
+    font-weight: 850;
+
+    letter-spacing:
+        0.15em;
+}
+
+
+.lab-card-body h3 {
+    margin:
+        0 0 15px;
+
+    color:
+        #f5faff;
+
+    font-size: 29px;
+
+    line-height: 1.1;
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+.lab-card-body p {
+    max-width: 330px;
+
+    margin: 0;
+
+    color:
+        var(--home-muted);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* ============================================================
+   LAB BUTTON
+   ============================================================ */
+
+.lab-open-btn {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+
+    padding:
+        14px
+        16px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 14px;
+
+    color:
+        #e8f4ff;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        padding 0.25s ease;
+}
+
+
+.lab-open-btn span {
+    font-size: 20px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.lab-open-btn:hover {
+    padding-left: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.075);
+
+    border-color:
+        rgba(255, 255, 255, 0.17);
+}
+
+
+.lab-open-btn:hover span {
+    transform:
+        translateX(5px);
+}
+
+
+/* ============================================================
+   PHYSICS CARD ACCENT
+   ============================================================ */
+
+.physics-lab:hover {
+    border-color:
+        rgba(66, 165, 255, 0.35);
+}
+
+
+/* ============================================================
+   CHEMISTRY CARD ACCENT
+   ============================================================ */
+
+.chemistry-lab:hover {
+    border-color:
+        rgba(255, 155, 106, 0.35);
+}
+
+
+/* ============================================================
+   BIOLOGY CARD ACCENT
+   ============================================================ */
+
+.biology-lab:hover {
+    border-color:
+        rgba(69, 230, 165, 0.35);
+}
+
+
+/* ============================================================
+   LEARNING SECTION
+   ============================================================ */
+
+.home-learning {
+    position: relative;
+
+    width: min(1250px, calc(100% - 12%));
+
+    margin:
+        0 auto;
+
+    padding:
+        90px
+        70px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(350px, 0.85fr)
+        minmax(0, 1fr);
+
+    gap: 80px;
+
+    align-items: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13, 31, 51, 0.82),
+            rgba(7, 17, 29, 0.92)
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(0, 0, 0, 0.30);
+
+    overflow: hidden;
+}
+
+
+.home-learning::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    left: -240px;
+    top: -180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 225, 255, 0.09),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   LEARNING VISUAL
+   ============================================================ */
+
+.learning-visual {
+    position: relative;
+
+    width: 390px;
+    height: 390px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ============================================================
+   LEARNING CIRCLES
+   ============================================================ */
+
+.learning-circle {
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.15);
+
+    border-radius: 50%;
+}
+
+
+.circle-one {
+    width: 160px;
+    height: 160px;
+
+    animation:
+        learningRotateOne 12s linear infinite;
+}
+
+
+.circle-two {
+    width: 260px;
+    height: 260px;
+
+    border-color:
+        rgba(154, 124, 255, 0.13);
+
+    animation:
+        learningRotateTwo 18s linear infinite;
+}
+
+
+.circle-three {
+    width: 350px;
+    height: 350px;
+
+    border-color:
+        rgba(69, 230, 165, 0.09);
+
+    animation:
+        learningRotateThree 25s linear infinite;
+}
+
+
+.learning-circle::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    top: 50%;
+    right: -3px;
+
+    border-radius: 50%;
+
+    background:
+        var(--home-cyan);
+
+    box-shadow:
+        0 0 15px
+        var(--home-cyan);
+}
+
+
+/* ============================================================
+   LEARNING SYMBOL
+   ============================================================ */
+
+.learning-symbol {
+    position: relative;
+
+    z-index: 4;
+
+    width: 115px;
+    height: 115px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(56, 225, 255, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 225, 255, 0.16),
+            rgba(8, 23, 39, 0.94)
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(56, 225, 255, 0.10);
+
+    font-size: 52px;
+
+    animation:
+        learningSymbolFloat 4s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   LEARNING CHIPS
+   ============================================================ */
+
+.learning-chip {
+    position: absolute;
+
+    z-index: 7;
+
+    padding:
+        9px
+        14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 999px;
+
+    color:
+        #d9e9f7;
+
+    background:
+        rgba(7, 18, 31, 0.75);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.chip-one {
+    left: 5px;
+    top: 90px;
+}
+
+
+.chip-two {
+    right: 0;
+    top: 185px;
+}
+
+
+.chip-three {
+    left: 55px;
+    bottom: 42px;
+}
+
+
+/* ============================================================
+   LEARNING CONTENT
+   ============================================================ */
+
+.learning-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.learning-content h2 {
+    max-width: 650px;
+
+    margin: 0;
+
+    color:
+        #f6faff;
+
+    font-size:
+        clamp(35px, 4.5vw, 57px);
+
+    line-height: 1.06;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.learning-content h2 span {
+    background:
+        linear-gradient(
+            90deg,
+            var(--home-cyan),
+            var(--home-blue),
+            var(--home-purple)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.learning-content > p {
+    max-width: 650px;
+
+    margin:
+        25px 0 0;
+
+    color:
+        var(--home-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   LEARNING FEATURES
+   ============================================================ */
+
+.learning-features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+
+    margin-top: 32px;
+}
+
+
+.learning-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.learning-feature > span {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        rgba(69, 230, 165, 0.20);
+
+    border-radius: 50%;
+
+    color:
+        var(--home-green);
+
+    background:
+        rgba(69, 230, 165, 0.07);
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.learning-feature strong {
+    display: block;
+
+    color:
+        #edf6ff;
+
+    font-size: 13px;
+
+    font-weight: 750;
+}
+
+
+.learning-feature small {
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        #71869d;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.home-cta {
+    position: relative;
+
+    width: min(1250px, calc(100% - 12%));
+
+    margin:
+        100px auto 0;
+
+    padding:
+        110px
+        30px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius:
+        32px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(56, 225, 255, 0.09),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(11, 29, 48, 0.92),
+            rgba(7, 17, 29, 0.95)
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(0, 0, 0, 0.28);
+}
+
+
+/* ============================================================
+   CTA GLOW
+   ============================================================ */
+
+.cta-glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 225, 255, 0.10),
+            transparent 70%
+        );
+
+    filter:
+        blur(15px);
+
+    pointer-events: none;
+
+    animation:
+        ctaGlow 5s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   CTA CONTENT
+   ============================================================ */
+
+.cta-content {
+    position: relative;
+
+    z-index: 3;
+}
+
+
+.cta-content h2 {
+    margin:
+        0;
+
+    color:
+        #f8fbff;
+
+    font-size:
+        clamp(42px, 6vw, 70px);
+
+    line-height: 1;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+.cta-content p {
+    margin:
+        22px auto 0;
+
+    color:
+        var(--home-muted);
+
+    font-size: 15px;
+}
+
+
+.cta-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 32px;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes glowMoveOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(90px, 40px)
+            scale(1.12);
+    }
+}
+
+
+@keyframes glowMoveTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-70px, -50px)
+            scale(1.10);
+    }
+}
+
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.18);
+    }
+}
+
+
+@keyframes coreFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+}
+
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform:
+            scale(1.12);
+        opacity: 0.9;
+    }
+}
+
+
+@keyframes coreSymbol {
+
+    0%,
+    100% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotate(5deg)
+            scale(1.05);
+    }
+}
+
+
+@keyframes orbitRotateOne {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes orbitRotateTwo {
+
+    from {
+        transform:
+            rotate(48deg);
+    }
+
+    to {
+        transform:
+            rotate(408deg);
+    }
+}
+
+
+@keyframes orbitRotateThree {
+
+    from {
+        transform:
+            rotate(-58deg);
+    }
+
+    to {
+        transform:
+            rotate(302deg);
+    }
+}
+
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+}
+
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+
+        opacity: 0.45;
+    }
+
+    50% {
+        transform:
+            translate(15px, -20px)
+            scale(1.4);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes learningRotateOne {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes learningRotateTwo {
+
+    from {
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+@keyframes learningRotateThree {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(-360deg);
+    }
+}
+
+
+@keyframes learningSymbolFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes ctaGlow {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+    }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .hero-inner {
+        grid-template-columns:
+            1fr;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+
+
+    .hero-text {
+        max-width: 850px;
+
+        margin: 0 auto;
+    }
+
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+
+    .hero-meta {
+        justify-content: center;
+    }
+
+
+    .hero-visual {
+        margin-top: 10px;
+
+        height: 520px;
+
+        transform:
+            scale(0.88);
+    }
+
+
+    .labs-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .biology-lab {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .home-learning {
+        grid-template-columns:
+            1fr;
+
+        gap: 40px;
+
+        padding:
+            70px 50px;
+
+        text-align: center;
+    }
+
+
+    .learning-content {
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+
+    .learning-features {
+        text-align: left;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .home-hero {
+        min-height: auto;
+
+        padding:
+            75px
+            20px
+            60px;
+    }
+
+
+    .hero-text h1 {
+        font-size:
+            clamp(43px, 13vw, 65px);
+    }
+
+
+    .hero-description {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-badge {
+        font-size: 9px;
+
+        letter-spacing:
+            0.10em;
+    }
+
+
+    .hero-actions {
+        flex-direction: column;
+
+        width: 100%;
+
+        max-width: 360px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .home-primary-btn,
+    .home-secondary-btn {
+        width: 100%;
+    }
+
+
+    .hero-meta {
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+
+    .hero-meta-item strong {
+        font-size: 20px;
+    }
+
+
+    .hero-meta-item span {
+        font-size: 9px;
+    }
+
+
+    .hero-visual {
+        width: 100%;
+
+        height: 430px;
+
+        transform:
+            scale(0.72);
+
+        margin-top:
+            -25px;
+
+        margin-bottom:
+            -45px;
+    }
+
+
+    .home-labs {
+        padding:
+            80px
+            20px
+            90px;
+    }
+
+
+    .home-section-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .home-section-heading h2 {
+        font-size:
+            clamp(34px, 10vw, 48px);
+    }
+
+
+    .home-section-heading > p {
+        max-width: 100%;
+    }
+
+
+    .labs-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .biology-lab {
+        grid-column:
+            auto;
+    }
+
+
+    .lab-card {
+        min-height:
+            400px;
+
+        padding:
+            25px;
+    }
+
+
+    .home-learning {
+        width:
+            calc(100% - 40px);
+
+        padding:
+            60px
+            22px;
+
+        border-radius:
+            25px;
+    }
+
+
+    .learning-visual {
+        width: 290px;
+        height: 290px;
+
+        transform:
+            scale(0.82);
+    }
+
+
+    .learning-content h2 {
+        font-size:
+            clamp(35px, 10vw, 49px);
+    }
+
+
+    .learning-content > p {
+        font-size:
+            14px;
+    }
+
+
+    .home-cta {
+        width:
+            calc(100% - 40px);
+
+        margin-top:
+            75px;
+
+        padding:
+            80px
+            20px;
+
+        border-radius:
+            25px;
+    }
+
+
+    .cta-content h2 {
+        font-size:
+            clamp(40px, 12vw, 58px);
+    }
+
+}
+
+
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 430px) {
+
+    .home-hero {
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+
+    .hero-meta {
+        gap:
+            10px;
+    }
+
+
+    .hero-meta-divider {
+        height:
+            28px;
+    }
+
+
+    .hero-visual {
+        height:
+            370px;
+
+        transform:
+            scale(0.62);
+
+        margin-top:
+            -50px;
+
+        margin-bottom:
+            -75px;
+    }
+
+
+    .home-labs {
+        padding-left:
+            16px;
+
+        padding-right:
+            16px;
+    }
+
+
+    .lab-card {
+        min-height:
+            380px;
+
+        padding:
+            22px;
+
+        border-radius:
+            21px;
+    }
+
+
+    .lab-card-body h3 {
+        font-size:
+            26px;
+    }
+
+
+    .home-learning {
+        width:
+            calc(100% - 32px);
+
+        padding:
+            50px
+            18px;
+    }
+
+
+    .learning-visual {
+        transform:
+            scale(0.72);
+
+        margin:
+            -35px
+            auto
+            -30px;
+    }
+
+
+    .home-cta {
+        width:
+            calc(100% - 32px);
+    }
+
+}
+
+
+/* ============================================================
+   REDUCE MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .scilab-home *,
+    .scilab-home *::before,
+    .scilab-home *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}

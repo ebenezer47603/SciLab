@@ -1,0 +1,1486 @@
+/* ============================================================
+   SciLab - Biology Laboratory
+   Osmosis.css
+   Professional Osmosis Laboratory UI
+   ============================================================ */
+
+
+/* ============================================================
+   ROOT
+   ============================================================ */
+
+.osmosis-page {
+
+    --osmosis-bg: #06111f;
+    --osmosis-panel: rgba(10, 24, 40, 0.88);
+    --osmosis-panel-2: rgba(14, 32, 51, 0.94);
+
+    --osmosis-border: rgba(125, 211, 252, 0.18);
+
+    --osmosis-blue: #38bdf8;
+    --osmosis-cyan: #22d3ee;
+    --osmosis-green: #34d399;
+    --osmosis-purple: #a78bfa;
+    --osmosis-orange: #fb923c;
+
+    --osmosis-text: #f8fafc;
+    --osmosis-muted: #94a3b8;
+
+    width: 100%;
+    min-height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    color: var(--osmosis-text);
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(34, 211, 238, 0.10),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(167, 139, 250, 0.10),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #020914,
+            #06111f 45%,
+            #081827
+        );
+
+    overflow-x: hidden;
+
+    box-sizing: border-box;
+}
+
+
+.osmosis-page *,
+.osmosis-page *::before,
+.osmosis-page *::after {
+
+    box-sizing: border-box;
+
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.osmosis-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 30px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid
+        var(--osmosis-border);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 36, 57, 0.95),
+            rgba(7, 21, 35, 0.90)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+}
+
+
+.osmosis-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    top: -130px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34, 211, 238, 0.22),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.osmosis-hero h1 {
+
+    position: relative;
+
+    margin: 0 0 8px;
+
+    font-size: clamp(
+        28px,
+        4vw,
+        44px
+    );
+
+    font-weight: 800;
+
+    letter-spacing: -0.03em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #67e8f9,
+            #a5f3fc
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.osmosis-hero p {
+
+    position: relative;
+
+    max-width: 780px;
+
+    margin: 0;
+
+    color: var(--osmosis-muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   MAIN LAB LAYOUT
+   ============================================================ */
+
+.osmosis-lab {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        340px;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* ============================================================
+   SIMULATION PANEL
+   ============================================================ */
+
+.osmosis-simulation-panel {
+
+    position: relative;
+
+    min-width: 0;
+
+    min-height: 620px;
+
+    border:
+        1px solid
+        var(--osmosis-border);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(30, 64, 175, 0.08),
+            transparent 50%
+        ),
+
+        #020914;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.38);
+}
+
+
+/* ============================================================
+   THREE.JS CANVAS
+   ============================================================ */
+
+.osmosis-simulation {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 620px;
+
+    overflow: hidden;
+}
+
+
+.osmosis-simulation canvas {
+
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    outline: none;
+
+    touch-action: none;
+}
+
+
+/* ============================================================
+   SIMULATION TOP LABEL
+   ============================================================ */
+
+.osmosis-simulation-header {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 18px;
+    left: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 14px;
+
+    border:
+        1px solid
+        rgba(125, 211, 252, 0.18);
+
+    border-radius: 999px;
+
+    background:
+        rgba(2, 9, 20, 0.72);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color: #dff9ff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    pointer-events: none;
+}
+
+
+.osmosis-status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--osmosis-green);
+
+    box-shadow:
+        0 0 14px
+        rgba(52, 211, 153, 0.8);
+
+    animation:
+        osmosis-pulse 1.6s infinite;
+}
+
+
+@keyframes osmosis-pulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform: scale(1.35);
+
+        opacity: 0.55;
+
+    }
+
+}
+
+
+/* ============================================================
+   SIDE CONTROL PANEL
+   ============================================================ */
+
+.osmosis-controls {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    min-width: 0;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        var(--osmosis-border);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(13, 30, 48, 0.96),
+            rgba(5, 17, 29, 0.96)
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.30);
+}
+
+
+/* ============================================================
+   CONTROL CARD
+   ============================================================ */
+
+.osmosis-control-card {
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+.osmosis-control-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: #e2e8f0;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.osmosis-value {
+
+    color: var(--osmosis-cyan);
+
+    font-weight: 800;
+
+    font-variant-numeric:
+        tabular-nums;
+}
+
+
+/* ============================================================
+   RANGE INPUT
+   ============================================================ */
+
+.osmosis-controls input[type="range"] {
+
+    width: 100%;
+
+    height: 5px;
+
+    margin: 5px 0;
+
+    border-radius: 999px;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--osmosis-cyan),
+            var(--osmosis-blue)
+        );
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+.osmosis-controls input[type="range"]::-webkit-slider-thumb {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        #dffcff;
+
+    background:
+        #22d3ee;
+
+    box-shadow:
+        0 0 15px
+        rgba(34, 211, 238, 0.65);
+
+    cursor: pointer;
+}
+
+
+.osmosis-controls input[type="range"]::-moz-range-thumb {
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        #dffcff;
+
+    background:
+        #22d3ee;
+
+    box-shadow:
+        0 0 15px
+        rgba(34, 211, 238, 0.65);
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   BUTTON ROW
+   ============================================================ */
+
+.osmosis-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+
+.osmosis-button {
+
+    min-height: 42px;
+
+    border:
+        1px solid
+        rgba(125, 211, 252, 0.18);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #e0f2fe;
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.osmosis-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(34, 211, 238, 0.10);
+
+    border-color:
+        rgba(34, 211, 238, 0.42);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.20);
+}
+
+
+.osmosis-button:active {
+
+    transform:
+        translateY(0);
+}
+
+
+.osmosis-button.primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0891b2,
+            #2563eb
+        );
+
+    border-color:
+        rgba(125, 211, 252, 0.5);
+
+    color: white;
+
+    box-shadow:
+        0 8px 25px
+        rgba(14, 165, 233, 0.22);
+}
+
+
+.osmosis-button.danger {
+
+    color: #fecaca;
+
+    border-color:
+        rgba(248, 113, 113, 0.20);
+}
+
+
+/* ============================================================
+   STATE / METRICS
+   ============================================================ */
+
+.osmosis-metrics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+
+.osmosis-metric {
+
+    padding: 12px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(2, 9, 20, 0.45);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.10);
+}
+
+
+.osmosis-metric-label {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        #64748b;
+
+    font-size: 10px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+.osmosis-metric-value {
+
+    color:
+        #e0f2fe;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   FLOW INDICATOR
+   ============================================================ */
+
+.osmosis-flow-indicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 12px 14px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(34, 211, 238, 0.06);
+
+    border:
+        1px solid
+        rgba(34, 211, 238, 0.13);
+
+    color:
+        #bae6fd;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.osmosis-flow-arrow {
+
+    font-size: 20px;
+
+    color:
+        var(--osmosis-cyan);
+
+    animation:
+        osmosis-flow-arrow 1s infinite;
+}
+
+
+@keyframes osmosis-flow-arrow {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(5px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+/* ============================================================
+   EDUCATION SECTION
+   ============================================================ */
+
+.osmosis-education {
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr
+        0.9fr;
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+
+.osmosis-info-card {
+
+    padding: 24px;
+
+    border:
+        1px solid
+        var(--osmosis-border);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 29, 46, 0.94),
+            rgba(5, 17, 29, 0.94)
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.24);
+}
+
+
+.osmosis-info-card h2 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        #f8fafc;
+
+    font-size: 21px;
+}
+
+
+.osmosis-info-card p {
+
+    margin:
+        0;
+
+    color:
+        var(--osmosis-muted);
+
+    line-height:
+        1.75;
+
+    font-size:
+        14px;
+}
+
+
+/* ============================================================
+   CONCEPT CARDS
+   ============================================================ */
+
+.osmosis-concepts {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.osmosis-concept {
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.10);
+}
+
+
+.osmosis-concept-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(34, 211, 238, 0.10);
+
+    font-size: 19px;
+}
+
+
+.osmosis-concept h3 {
+
+    margin:
+        0 0 5px;
+
+    font-size: 13px;
+
+    color:
+        #e2e8f0;
+}
+
+
+.osmosis-concept p {
+
+    font-size:
+        12px;
+
+    line-height:
+        1.55;
+
+    color:
+        #7f91a7;
+}
+
+
+/* ============================================================
+   MEDIA / VIDEO SECTION
+   ============================================================ */
+
+.osmosis-media {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+
+.osmosis-media-card {
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--osmosis-border);
+
+    border-radius: 22px;
+
+    background:
+        #071522;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.osmosis-media-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        16px 18px;
+
+    border-bottom:
+        1px solid
+        rgba(148, 163, 184, 0.10);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+.osmosis-media-header h2 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    color:
+        #e2e8f0;
+}
+
+
+.osmosis-media-content {
+
+    padding: 16px;
+}
+
+
+/* ============================================================
+   VIDEO
+   ============================================================ */
+
+.osmosis-video {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background:
+        #000;
+}
+
+
+.osmosis-video iframe,
+.osmosis-video video {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    object-fit: cover;
+}
+
+
+/* ============================================================
+   IMAGE GALLERY
+   ============================================================ */
+
+.osmosis-image-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.osmosis-image-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 170px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+
+    background:
+        #020914;
+}
+
+
+.osmosis-image-card img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 170px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.osmosis-image-card:hover img {
+
+    transform:
+        scale(1.045);
+}
+
+
+.osmosis-image-caption {
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    padding: 9px 11px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(2, 9, 20, 0.78);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    color:
+        #e0f2fe;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* ============================================================
+   TEACHER NOTE
+   ============================================================ */
+
+.osmosis-teacher-note {
+
+    position: relative;
+
+    margin-top: 20px;
+
+    padding: 20px 22px 20px 52px;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.18);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.08),
+            rgba(34, 211, 238, 0.05)
+        );
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+}
+
+
+.osmosis-teacher-note::before {
+
+    content:
+        "👨‍🏫";
+
+    position: absolute;
+
+    left: 18px;
+    top: 18px;
+
+    font-size:
+        22px;
+}
+
+
+.osmosis-teacher-note strong {
+
+    color:
+        #ddd6fe;
+}
+
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+
+.osmosis-legend {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 16px;
+}
+
+
+.osmosis-legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+}
+
+
+.osmosis-legend-dot {
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+
+
+.osmosis-legend-dot.water {
+
+    background:
+        #4da8ff;
+
+    box-shadow:
+        0 0 10px
+        rgba(77, 168, 255, 0.7);
+}
+
+
+.osmosis-legend-dot.solute {
+
+    background:
+        #fb923c;
+
+    box-shadow:
+        0 0 10px
+        rgba(251, 146, 60, 0.6);
+}
+
+
+.osmosis-legend-dot.membrane {
+
+    background:
+        #67e8f9;
+
+    box-shadow:
+        0 0 10px
+        rgba(103, 232, 249, 0.6);
+}
+
+
+/* ============================================================
+   FULLSCREEN BUTTON
+   ============================================================ */
+
+.osmosis-fullscreen {
+
+    position: absolute;
+
+    z-index: 20;
+
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(125, 211, 252, 0.18);
+
+    border-radius: 12px;
+
+    background:
+        rgba(2, 9, 20, 0.70);
+
+    backdrop-filter:
+        blur(10px);
+
+    color:
+        #bae6fd;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.osmosis-fullscreen:hover {
+
+    background:
+        rgba(34, 211, 238, 0.12);
+
+    border-color:
+        rgba(34, 211, 238, 0.4);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (
+    max-width: 1050px
+) {
+
+    .osmosis-lab {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .osmosis-controls {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        align-items: start;
+
+    }
+
+
+    .osmosis-buttons {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .osmosis-flow-indicator {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (
+    max-width: 700px
+) {
+
+    .osmosis-page {
+
+        padding: 12px;
+
+    }
+
+
+    .osmosis-hero {
+
+        padding: 22px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .osmosis-simulation-panel {
+
+        min-height:
+            480px;
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .osmosis-simulation {
+
+        min-height:
+            480px;
+
+    }
+
+
+    .osmosis-controls {
+
+        display:
+            flex;
+
+        padding:
+            13px;
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .osmosis-education {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .osmosis-concepts {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .osmosis-image-gallery {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .osmosis-image-card,
+    .osmosis-image-card img {
+
+        min-height:
+            210px;
+
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL SCREEN
+   ============================================================ */
+
+@media (
+    max-width: 430px
+) {
+
+    .osmosis-page {
+
+        padding:
+            8px;
+
+    }
+
+
+    .osmosis-hero h1 {
+
+        font-size:
+            25px;
+
+    }
+
+
+    .osmosis-simulation-panel,
+    .osmosis-simulation {
+
+        min-height:
+            420px;
+
+    }
+
+
+    .osmosis-metrics {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .osmosis-buttons {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .osmosis-page *,
+    .osmosis-page *::before,
+    .osmosis-page *::after {
+
+        animation-duration:
+            0.001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.001ms !important;
+
+    }
+
+}
