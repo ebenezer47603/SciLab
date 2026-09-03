@@ -8,6 +8,7 @@ import "./styles/biology.css";
 import "./styles/physics.css";
 import "./styles/home.css";
 import "./styles/chemistry.css";
+import "./styles/enzyme.css";
 
 
 // ============================================================
